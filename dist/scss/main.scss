@@ -1,5 +1,8 @@
 // Custom styles
-@use "_variables.scss";
+$primary: #0c7075;
+$secondary: #dee2e6;
+
+// Custom properties
 
 // Import bootstrap
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
