@@ -1,1 +1,5 @@
-@use "_global-modules";
+// Custom styles
+@use "_variables.scss";
+
+// Import bootstrap
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
