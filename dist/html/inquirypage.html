@@ -20,7 +20,7 @@
       src="https://kit.fontawesome.com/7ada1bfca4.js"
       crossorigin="anonymous"
     ></script> -->
-    <title>LINK.exe | Inquiries</title>
+    <title>Inquiries</title>
   </head>
   <body>
     <main class="d-flex flex-nowrap">
@@ -84,121 +84,256 @@
           </div>
         </div>
       </aside>
+      <!-- Inquiry Dashboard -->
+      <section id="dashboard" class="col-4 border p-2">
+        <div id="inquiries-list">
+          <div>
+            <h5 class="d-flex">
+              <span class="material-symbols-outlined mx-1 mb-1"> inbox </span>
+              Inquiry List
+            </h5>
+          </div>
 
-      <section id="dashboard" class="col-8 border">
-        <div class= "messages">
-        <h2>Messages</h2>
-       <!-- Search form -->
-        <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-         <div data-mdb-perfect-scrollbar="true" style="position: relative; height: 400px">
-                    <ul class="list-unstyled mb-0">
-                      <li class="p-2 border-bottom">
-                        <a href="#!" class="d-flex justify-content-between">
-                          <div class="d-flex flex-row">
-                            <div>
-                              <img
-                                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
-                                alt="avatar" class="d-flex align-self-center me-3" width="60">
-                              <span class="badge bg-success badge-dot"></span>
-                            </div>
-                            <div class="pt-1">
-                              <p class="fw-bold mb-10">John Doe <span class="badge bg-danger rounded-pill float-middle">5</span></p>
-                              <p class="small text-muted">Hello, Are you there?</p>
-                            </div>
-                          </div>
-                          <div class="pt-1">
-                            <p class="small text-muted mb-10">Just now</p>
-                          </div>
-                        </a>
-                      </li>
-                      <li class="p-2 border-bottom">
-                        <a href="#!" class="d-flex justify-content-between">
-                          <div class="d-flex flex-row">
-                            <div>
-                              <img
-                                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
-                                alt="avatar" class="d-flex align-self-center me-3" width="60">
-                              <span class="badge bg-warning badge-dot"></span>
-                            </div>
-                            <div class="pt-1">
-                              <p class="fw-bold mb-10">John Doe <span class="badge bg-danger rounded-pill float-middle">5</span></p>
-                              <p class="small text-muted">Our company needs to prepare for something.</p>
-                            </div>
-                          </div>
-                          <div class="pt-1">
-                            <p class="small text-muted mb-1">5 mins ago</p>
-                          </div>
-                        </a>
-                      </li>
-                      <li class="p-2 border-bottom">
-                        <a href="#!" class="d-flex justify-content-between">
-                          <div class="d-flex flex-row">
-                            <div>
-                              <img
-                                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
-                                alt="avatar" class="d-flex align-self-center me-3" width="60">
-                              <span class="badge bg-success badge-dot"></span>
-                            </div>
-                            <div class="pt-1">
-                              <p class="fw-bold mb-10">John Doe <span class="badge bg-danger rounded-pill float-middle">5</span></p>
-                              <p class="small text-muted">Our company needs to prepare for something.</p>
-                            </div>
-                          </div>
-                          <div class="pt-1">
-                            <p class="small text-muted mb-1">Yesterday</p>
-                          </div>
-                        </a>
-                      </li>
-                      <li class="p-2 border-bottom">
-                        <a href="#!" class="d-flex justify-content-between">
-                          <div class="d-flex flex-row">
-                            <div>
-                              <img
-                                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
-                                alt="avatar" class="d-flex align-self-center me-3" width="60">
-                              <span class="badge bg-danger badge-dot"></span>
-                            </div>
-                            <div class="pt-1">
-                              <p class="fw-bold mb-10">John Doe <span class="badge bg-danger rounded-pill float-middle">5</span></p>
-                              <p class="small text-muted">Our company needs to prepare for something.</p>
-                            </div>
-                          </div>
-                          <div class="pt-1">
-                            <p class="small text-muted mb-1">Yesterday</p>
-                          </div>
-                        </a>
-                      </li>
-                      <li class="p-2 border-bottom">
-                        <a href="#!" class="d-flex justify-content-between">
-                          <div class="d-flex flex-row">
-                            <div>
-                              <img
-                                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
-                                alt="avatar" class="d-flex align-self-center me-3" width="60">
-                              <span class="badge bg-warning badge-dot"></span>
-                            </div>
-                            <div class="pt-1">
-                              <p class="fw-bold mb-10">John Doe <span class="badge bg-danger rounded-pill float-middle">5</span></p>
-                              <p class="small text-muted">Our company needs to prepare for something.</p>
-                            </div>
-                          </div>
-                          <div class="pt-1">
-                            <p class="small text-muted mb-1">Yesterday</p>
-                          </div>
-                        </a>
-                      </li>
-                    </ul>
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Search for a client..."
+            />
+            <button class="btn btn-outline-primary d-flex" type="button">
+              <span class="material-symbols-outlined"> search </span>
+            </button>
+          </div>
+
+          <div class="h-50 overflow-hidden">
+            <ul class="list-unstyled">
+              <!-- LIST ITEM STANDARD -->
+              <li class="p-2 my-1 border rounded sidebar-items">
+                <a href="#" class="d-flex text-decoration-none">
+                  <div class="d-flex flex-row">
+                    <div>
+                      <img
+                        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
+                        alt="avatar"
+                        class="d-flex align-self-center me-3"
+                        width="60"
+                      />
+                    </div>
+                    <div class="d-flex flex-column">
+                      <span class="fw-bold">John Doe</span>
+                      <span class="small text-muted"
+                        >Lorem, ipsum dolor sit amet consectetur adipisicing
+                        elit. Tempore obcaecati sapiente pariatur.</span
+                      >
+                    </div>
                   </div>
-                </div>
-              </div>
-        </div>  
+                </a>
+              </li>
 
-        <div class="account">
-        <h6>John Doe</h6>
+              <li class="p-2 my-1 border rounded sidebar-items">
+                <a href="#" class="d-flex text-decoration-none">
+                  <div class="d-flex flex-row">
+                    <div>
+                      <img
+                        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
+                        alt="avatar"
+                        class="d-flex align-self-center me-3"
+                        width="60"
+                      />
+                    </div>
+                    <div class="d-flex flex-column">
+                      <span class="fw-bold">John Doe</span>
+                      <span class="small text-muted"
+                        >Lorem, ipsum dolor sit amet consectetur adipisicing
+                        elit. Tempore obcaecati sapiente pariatur.</span
+                      >
+                    </div>
+                  </div>
+                </a>
+              </li>
+
+              <li class="p-2 my-1 border rounded sidebar-items">
+                <a href="#" class="d-flex text-decoration-none">
+                  <div class="d-flex flex-row">
+                    <div>
+                      <img
+                        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
+                        alt="avatar"
+                        class="d-flex align-self-center me-3"
+                        width="60"
+                      />
+                    </div>
+                    <div class="d-flex flex-column">
+                      <span class="fw-bold">John Doe</span>
+                      <span class="small text-muted"
+                        >Lorem, ipsum dolor sit amet consectetur adipisicing
+                        elit. Tempore obcaecati sapiente pariatur.</span
+                      >
+                    </div>
+                  </div>
+                </a>
+              </li>
+
+              <li class="p-2 my-1 border rounded sidebar-items">
+                <a href="#" class="d-flex text-decoration-none">
+                  <div class="d-flex flex-row">
+                    <div>
+                      <img
+                        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
+                        alt="avatar"
+                        class="d-flex align-self-center me-3"
+                        width="60"
+                      />
+                    </div>
+                    <div class="d-flex flex-column">
+                      <span class="fw-bold">John Doe</span>
+                      <span class="small text-muted"
+                        >Lorem, ipsum dolor sit amet consectetur adipisicing
+                        elit. Tempore obcaecati sapiente pariatur.</span
+                      >
+                    </div>
+                  </div>
+                </a>
+              </li>
+
+              <li class="p-2 my-1 border rounded sidebar-items">
+                <a href="#" class="d-flex text-decoration-none">
+                  <div class="d-flex flex-row">
+                    <div>
+                      <img
+                        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
+                        alt="avatar"
+                        class="d-flex align-self-center me-3"
+                        width="60"
+                      />
+                    </div>
+                    <div class="d-flex flex-column">
+                      <span class="fw-bold">John Doe</span>
+                      <span class="small text-muted"
+                        >Lorem, ipsum dolor sit amet consectetur adipisicing
+                        elit. Tempore obcaecati sapiente pariatur.</span
+                      >
+                    </div>
+                  </div>
+                </a>
+              </li>
+
+              <li class="p-2 my-1 border rounded sidebar-items">
+                <a href="#" class="d-flex text-decoration-none">
+                  <div class="d-flex flex-row">
+                    <div>
+                      <img
+                        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
+                        alt="avatar"
+                        class="d-flex align-self-center me-3"
+                        width="60"
+                      />
+                    </div>
+                    <div class="d-flex flex-column">
+                      <span class="fw-bold">John Doe</span>
+                      <span class="small text-muted"
+                        >Lorem, ipsum dolor sit amet consectetur adipisicing
+                        elit. Tempore obcaecati sapiente pariatur.</span
+                      >
+                    </div>
+                  </div>
+                </a>
+              </li>
+
+              <li class="p-2 my-1 border rounded sidebar-items">
+                <a href="#" class="d-flex text-decoration-none">
+                  <div class="d-flex flex-row">
+                    <div>
+                      <img
+                        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
+                        alt="avatar"
+                        class="d-flex align-self-center me-3"
+                        width="60"
+                      />
+                    </div>
+                    <div class="d-flex flex-column">
+                      <span class="fw-bold">John Doe</span>
+                      <span class="small text-muted"
+                        >Lorem, ipsum dolor sit amet consectetur adipisicing
+                        elit. Tempore obcaecati sapiente pariatur.</span
+                      >
+                    </div>
+                  </div>
+                </a>
+              </li>
+
+              <li class="p-2 my-1 border rounded sidebar-items">
+                <a href="#" class="d-flex text-decoration-none">
+                  <div class="d-flex flex-row">
+                    <div>
+                      <img
+                        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
+                        alt="avatar"
+                        class="d-flex align-self-center me-3"
+                        width="60"
+                      />
+                    </div>
+                    <div class="d-flex flex-column">
+                      <span class="fw-bold">John Doe</span>
+                      <span class="small text-muted"
+                        >Lorem, ipsum dolor sit amet consectetur adipisicing
+                        elit. Tempore obcaecati sapiente pariatur.</span
+                      >
+                    </div>
+                  </div>
+                </a>
+              </li>
+
+              <li class="p-2 my-1 border rounded sidebar-items">
+                <a href="#" class="d-flex text-decoration-none">
+                  <div class="d-flex flex-row">
+                    <div>
+                      <img
+                        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
+                        alt="avatar"
+                        class="d-flex align-self-center me-3"
+                        width="60"
+                      />
+                    </div>
+                    <div class="d-flex flex-column">
+                      <span class="fw-bold">John Doe</span>
+                      <span class="small text-muted"
+                        >Lorem, ipsum dolor sit amet consectetur adipisicing
+                        elit. Tempore obcaecati sapiente pariatur.</span
+                      >
+                    </div>
+                  </div>
+                </a>
+              </li>
+
+              <li class="p-2 my-1 border rounded sidebar-items">
+                <a href="#" class="d-flex text-decoration-none">
+                  <div class="d-flex flex-row">
+                    <div>
+                      <img
+                        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
+                        alt="avatar"
+                        class="d-flex align-self-center me-3"
+                        width="60"
+                      />
+                    </div>
+                    <div class="d-flex flex-column">
+                      <span class="fw-bold">John Doe</span>
+                      <span class="small text-muted"
+                        >Lorem, ipsum dolor sit amet consectetur adipisicing
+                        elit. Tempore obcaecati sapiente pariatur.</span
+                      >
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
-        </section>
+      </section>
 
-      <section id="side-content" class="col-2 border">
+      <section id="inquiry-content" class="col-6 border">
+        content (will contain client info and inquiry info)
       </section>
     </main>
 

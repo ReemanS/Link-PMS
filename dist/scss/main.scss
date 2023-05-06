@@ -19,15 +19,6 @@ $secondary: #dee2e6;
 // Import bootstrap
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
-#dashboard {
-  /* CSS styles for the section with id "dashboard" */
-  margin: 5px;
-  padding: 1px;
-  padding-right: 1px;
-  background-color: #f5f3f3fe;
-  border-radius: 15px;
-  display: flex; 
-}
 .messages {
   padding-left: 10px;
   padding-right: 5%;
@@ -36,11 +27,11 @@ $secondary: #dee2e6;
   margin-top: 2px;
   font-weight: bold;
 }
-.messages h2{
+.messages h2 {
   font-family: "Poppins", sans-serif;
   font-weight: bold;
 }
-.account{
+.account {
   padding-right: 40%;
   padding-left: 10px;
   margin: 20px;
