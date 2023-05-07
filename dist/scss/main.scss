@@ -8,39 +8,15 @@
 // Custom styles
 $primary: #0c7075;
 $secondary: #dee2e6;
+$info: #fad02c;
 
 // Custom properties
-.sidebar-items {
+.inactive-hover-items {
   &:hover {
     background-color: $secondary;
+    transition: 0.15s;
   }
 }
 
 // Import bootstrap
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
-
-.messages {
-  padding-left: 10px;
-  padding-right: 5%;
-  margin: 20px;
-  margin-right: 1px;
-  margin-top: 2px;
-  font-weight: bold;
-}
-.messages h2 {
-  font-family: "Poppins", sans-serif;
-  font-weight: bold;
-}
-.account {
-  padding-right: 40%;
-  padding-left: 10px;
-  margin: 20px;
-}
-#side-content {
-  /* CSS styles for the section with id "side-content" */
-  margin: 5px;
-  margin-left: 0px;
-  padding: 1px;
-  background-color: #f5f3f3fe;
-  border-radius: 15px;
-}

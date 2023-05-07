@@ -43,19 +43,28 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="sidebar-items nav-link py-3 d-flex rounded-4">
+            <a
+              href="#"
+              class="inactive-hover-items nav-link py-3 d-flex rounded-4"
+            >
               <span class="material-symbols-outlined mx-1"> receipt_long </span>
               Transactions
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="sidebar-items nav-link py-3 d-flex rounded-4">
+            <a
+              href="#"
+              class="inactive-hover-items nav-link py-3 d-flex rounded-4"
+            >
               <span class="material-symbols-outlined mx-1"> dashboard </span>
               Dashboard
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="sidebar-items nav-link py-3 d-flex rounded-4">
+            <a
+              href="#"
+              class="inactive-hover-items nav-link py-3 d-flex rounded-4"
+            >
               <span class="material-symbols-outlined mx-1">
                 supervised_user_circle
               </span>
@@ -63,7 +72,10 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="sidebar-items nav-link py-3 d-flex rounded-4">
+            <a
+              href="#"
+              class="inactive-hover-items nav-link py-3 d-flex rounded-4"
+            >
               <span class="material-symbols-outlined mx-1"> groups </span>
               Members
             </a>
@@ -84,13 +96,22 @@
           </div>
         </div>
       </aside>
+
       <!-- Inquiry Dashboard -->
-      <section id="dashboard" class="col-4 border p-2">
+      <section id="dashboard" class="col-7 border p-2">
         <div id="inquiries-list">
           <div>
-            <h5 class="d-flex">
-              <span class="material-symbols-outlined mx-1 mb-1"> inbox </span>
-              Inquiry List
+            <h5
+              class="d-flex justify-content-between align-items-center fw-bold"
+            >
+              <div class="d-flex">
+                <span class="material-symbols-outlined mx-1 mb-1"> list </span>
+                Inquiry List
+              </div>
+              <div class="btn btn-primary d-flex">
+                <span class="material-symbols-outlined"> add </span>
+                Add inquiry
+              </div>
             </h5>
           </div>
 
@@ -98,7 +119,7 @@
             <input
               type="text"
               class="form-control"
-              placeholder="Search for a client..."
+              placeholder="Search for an inquiry..."
             />
             <button class="btn btn-outline-primary d-flex" type="button">
               <span class="material-symbols-outlined"> search </span>
@@ -108,7 +129,7 @@
           <div class="overflow-auto" style="max-height: 85vh">
             <ul class="list-unstyled">
               <!-- LIST ITEM STANDARD -->
-              <li class="p-2 my-1 border rounded sidebar-items">
+              <li class="p-2 my-1 border rounded inactive-hover-items">
                 <a href="#" class="d-flex text-decoration-none">
                   <div class="d-flex flex-row">
                     <div>
@@ -130,7 +151,7 @@
                 </a>
               </li>
 
-              <li class="p-2 my-1 border rounded sidebar-items">
+              <li class="p-2 my-1 border rounded inactive-hover-items">
                 <a href="#" class="d-flex text-decoration-none">
                   <div class="d-flex flex-row">
                     <div>
@@ -152,7 +173,7 @@
                 </a>
               </li>
 
-              <li class="p-2 my-1 border rounded sidebar-items">
+              <li class="p-2 my-1 border rounded inactive-hover-items">
                 <a href="#" class="d-flex text-decoration-none">
                   <div class="d-flex flex-row">
                     <div>
@@ -174,7 +195,7 @@
                 </a>
               </li>
 
-              <li class="p-2 my-1 border rounded sidebar-items">
+              <li class="p-2 my-1 border rounded inactive-hover-items">
                 <a href="#" class="d-flex text-decoration-none">
                   <div class="d-flex flex-row">
                     <div>
@@ -196,7 +217,7 @@
                 </a>
               </li>
 
-              <li class="p-2 my-1 border rounded sidebar-items">
+              <li class="p-2 my-1 border rounded inactive-hover-items">
                 <a href="#" class="d-flex text-decoration-none">
                   <div class="d-flex flex-row">
                     <div>
@@ -218,7 +239,7 @@
                 </a>
               </li>
 
-              <li class="p-2 my-1 border rounded sidebar-items">
+              <li class="p-2 my-1 border rounded inactive-hover-items">
                 <a href="#" class="d-flex text-decoration-none">
                   <div class="d-flex flex-row">
                     <div>
@@ -240,7 +261,7 @@
                 </a>
               </li>
 
-              <li class="p-2 my-1 border rounded sidebar-items">
+              <li class="p-2 my-1 border rounded inactive-hover-items">
                 <a href="#" class="d-flex text-decoration-none">
                   <div class="d-flex flex-row">
                     <div>
@@ -262,7 +283,7 @@
                 </a>
               </li>
 
-              <li class="p-2 my-1 border rounded sidebar-items">
+              <li class="p-2 my-1 border rounded inactive-hover-items">
                 <a href="#" class="d-flex text-decoration-none">
                   <div class="d-flex flex-row">
                     <div>
@@ -284,7 +305,7 @@
                 </a>
               </li>
 
-              <li class="p-2 my-1 border rounded sidebar-items">
+              <li class="p-2 my-1 border rounded inactive-hover-items">
                 <a href="#" class="d-flex text-decoration-none">
                   <div class="d-flex flex-row">
                     <div>
@@ -306,7 +327,7 @@
                 </a>
               </li>
 
-              <li class="p-2 my-1 border rounded sidebar-items">
+              <li class="p-2 my-1 border rounded inactive-hover-items">
                 <a href="#" class="d-flex text-decoration-none">
                   <div class="d-flex flex-row">
                     <div>
@@ -332,8 +353,139 @@
         </div>
       </section>
 
-      <section id="inquiry-content" class="col-6 border">
-        content (will contain client info and inquiry info)
+      <!-- Inquiry Content -->
+      <section id="inquiry-content" class="col-3 border p-2 px-3 bg-light">
+        <h5 class="d-flex justify-content-between align-items-center fw-bold">
+          <div class="d-flex">
+            <span class="material-symbols-outlined mx-1 mb-1">
+              arrow_right_alt
+            </span>
+            Selected Inquiry
+          </div>
+        </h5>
+        <div class="overflow-y-auto" style="max-height: 90vh">
+          <div class="border my-2 p-1 rounded">
+            <!-- Inquiry information -->
+            <h5 class="d-flex align-items-center justify-content-between">
+              <div class="d-flex">
+                <span class="material-symbols-outlined mx-1"> info </span>
+                Inquiry Information
+              </div>
+              <div class="d-flex">
+                <button class="btn rounded-pill btn-sm btn-info d-flex mx-1">
+                  <span class="material-symbols-outlined"> edit </span>
+                </button>
+                <button class="btn rounded-pill btn-sm btn-danger d-flex mx-1">
+                  <span class="material-symbols-outlined"> delete </span>
+                </button>
+              </div>
+            </h5>
+            <table class="table table-striped">
+              <tr>
+                <td><span class="fw-bold">Inquiry ID</span></td>
+                <td><span class="text-muted">1</span></td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="fw-bold">Inquiry Details</span>
+                </td>
+                <td>
+                  <span class="text-muted"
+                    >Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Sit cumque at praesentium.</span
+                  >
+                </td>
+                <br />
+              </tr>
+            </table>
+          </div>
+
+          <div class="border my-2 p-1 rounded">
+            <!-- client information -->
+            <h5 class="d-flex align-items-center justify-content-between">
+              <div class="d-flex">
+                <span class="material-symbols-outlined mx-1"> person </span>
+                Client Information
+              </div>
+              <div class="d-flex">
+                <button class="btn rounded-pill btn-sm btn-info d-flex mx-1">
+                  <span class="material-symbols-outlined"> edit </span>
+                </button>
+                <button class="btn rounded-pill btn-sm btn-danger d-flex mx-1">
+                  <span class="material-symbols-outlined"> delete </span>
+                </button>
+              </div>
+            </h5>
+            <table class="table table-striped">
+              <tr>
+                <td><span class="fw-bold">Client ID</span></td>
+                <td><span class="text-muted">1</span></td>
+              </tr>
+              <tr>
+                <td><span class="fw-bold">Client Name</span></td>
+                <td><span class="text-muted">John Doe</span></td>
+              </tr>
+              <tr>
+                <td><span class="fw-bold">Client Address</span></td>
+                <td><span class="text-muted">1 Peterson Ave</span></td>
+              </tr>
+              <tr>
+                <td><span class="fw-bold">Client Email</span></td>
+                <td><span class="text-muted">johndoe@email.com</span></td>
+              </tr>
+              <tr>
+                <td><span class="fw-bold">Client Phone</span></td>
+                <td><span class="text-muted">0314141</span></td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="border my-2 p-1 rounded">
+            <!-- Officer information-->
+            <!-- If empty, place muted text that says no officer assigned yet -->
+            <h5 class="d-flex align-items-center justify-content-between">
+              <div class="d-flex">
+                <span class="material-symbols-outlined">
+                  supervisor_account
+                </span>
+                &VeryThinSpace; Assigned Officer
+              </div>
+              <div class="d-flex">
+                <button class="btn rounded-pill btn-sm btn-info d-flex mx-1">
+                  <span class="material-symbols-outlined"> edit </span>
+                </button>
+                <button class="btn rounded-pill btn-sm btn-danger d-flex mx-1">
+                  <span class="material-symbols-outlined"> delete </span>
+                </button>
+              </div>
+            </h5>
+            <table class="table table-striped">
+              <tr>
+                <td>
+                  <span class="fw-bold">Officer ID</span>
+                </td>
+                <td><span class="text-muted">1</span> <br /></td>
+              </tr>
+              <!-- complete the table for me -->
+              <tr>
+                <td><span class="fw-bold">Officer Name</span></td>
+                <td><span class="text-muted">Officer Doe</span></td>
+              </tr>
+              <tr>
+                <td><span class="fw-bold">Officer Address</span></td>
+                <td><span class="text-muted">2 Jackson Ave</span></td>
+              </tr>
+              <tr>
+                <td><span class="fw-bold">Officer Email</span></td>
+                <td><span class="text-muted">officerdoe@email.com</span></td>
+              </tr>
+              <tr>
+                <td><span class="fw-bold">Officer Birthday</span></td>
+                <td><span class="text-muted">January 1, 2000</span></td>
+              </tr>
+            </table>
+          </div>
+        </div>
       </section>
     </main>
 
