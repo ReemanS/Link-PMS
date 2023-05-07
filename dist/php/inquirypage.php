@@ -92,7 +92,7 @@
                     $filterResult = mysqli_query($conn, $query);
                     return $filterResult;
                 }
-                if (isset($_POST['inquiry-search'])) {
+                if (isset($_POST['inquiry-search-btn'])) {
                     $SEARCHVAL = $_POST['inquiry-searchbar'];
                     $query = "SELECT * FROM inquiry WHERE INQ_Details LIKE '%$SEARCHVAL%'";
                     $filterResult = filterItems($query);
@@ -103,13 +103,13 @@
                 ?>
 
                 <!-- Search inquiry -->
-                <div class="input-group">
+                <form class="input-group" method="post">
                     <input type="text" class="form-control" name="inquiry-searchbar"
                         placeholder="Search for an inquiry..." />
                     <button name="inquiry-search-btn" class="btn btn-outline-primary d-flex">
                         <span class="material-symbols-outlined"> search </span>
                     </button>
-                </div>
+                </form>
 
                 <div class="overflow-auto" style="max-height: 85vh">
                     <ul class="list-unstyled">
@@ -126,7 +126,7 @@
                                 $details = substr($details, 0, 100);
                                 $details = $details . "...";
 
-                                $selectedInquiry = $_GET['sel_inquiry']; // extension of code found below
+                                $selectedInquiry = isset($_GET['sel_inquiry']) ? $_GET['sel_inquiry'] : ''; // extension of code found below
                         ?>
                         <!-- LIST ITEM STANDARD -->
                         <li
@@ -208,6 +208,12 @@
 
                 <div class="border my-2 p-1 rounded">
                     <!-- client information -->
+                    <?php
+                    $selectedInquiryClientID = $selectedInquiryRow['CLIENT_ID'];
+                    $selectedInquiryClientQuery = "SELECT * FROM client WHERE CLIENT_ID = '$selectedInquiryClientID'";
+                    $selectedInquiryClientResult = mysqli_query($conn, $selectedInquiryClientQuery);
+                    $selectedInquiryClientRow = mysqli_fetch_assoc($selectedInquiryClientResult);
+                    ?>
                     <h5 class="d-flex align-items-center justify-content-between">
                         <div class="d-flex">
                             <span class="material-symbols-outlined mx-1"> person </span>
@@ -225,23 +231,31 @@
                     <table class="table table-striped">
                         <tr>
                             <td><span class="fw-bold">Client ID</span></td>
-                            <td><span class="text-muted">1</span></td>
+                            <td><span class="text-muted"><?php echo $selectedInquiryClientID ?></span></td>
                         </tr>
                         <tr>
                             <td><span class="fw-bold">Client Name</span></td>
-                            <td><span class="text-muted">John Doe</span></td>
+                            <td><span
+                                    class="text-muted"><?php echo $selectedInquiryClientRow['CLIENT_GivenName'],' ', $selectedInquiryClientRow['CLIENT_Surname'] ?></span>
+                            </td>
                         </tr>
                         <tr>
                             <td><span class="fw-bold">Client Address</span></td>
-                            <td><span class="text-muted">1 Peterson Ave</span></td>
+                            <td><span
+                                    class="text-muted"><?php echo $selectedInquiryClientRow['CLIENT_Address'] ?></span>
+                            </td>
                         </tr>
                         <tr>
                             <td><span class="fw-bold">Client Email</span></td>
-                            <td><span class="text-muted">johndoe@email.com</span></td>
+                            <td><span
+                                    class="text-muted"><?php echo $selectedInquiryClientRow['CLIENT_EmailAddress'] ?></span>
+                            </td>
                         </tr>
                         <tr>
                             <td><span class="fw-bold">Client Phone</span></td>
-                            <td><span class="text-muted">0314141</span></td>
+                            <td><span
+                                    class="text-muted"><?php echo $selectedInquiryClientRow['CLIENT_ContactNo'] ?></span>
+                            </td>
                         </tr>
                     </table>
                 </div>
