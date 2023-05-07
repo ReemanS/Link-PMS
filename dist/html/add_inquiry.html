@@ -93,7 +93,7 @@
       </aside>
 
       <section class="col-10 p-2 bg-secondary-subtle">
-        <div class="d-flex align-items-center">
+        <div class="d-flex align-items-center mb-2">
           <h4 class="d-flex align-items-center fw-bold">
             <span class="material-symbols-outlined"> add_circle </span>
             &VeryThinSpace; Create New Inquiry
@@ -137,11 +137,59 @@
           <section
             class="col-2 d-flex align-items-center justify-content-center"
           >
-            <h4 class="display-6">OR</h4>
+            <span class="display-6">OR</span>
           </section>
-          <section
-            class="col-6 container p-2 bg-white border rounded"
-          ></section>
+          <section class="col-4 container p-2 bg-white border rounded">
+            <!-- Select from list of clients, each item is a li with anchor tag -->
+            <h5 class="fw-bold">Select from existing clients</h5>
+            <div class="input-group mb-2">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Search for a client..."
+              />
+              <button class="btn btn-outline-primary d-flex" type="button">
+                <span class="material-symbols-outlined"> search </span>
+              </button>
+            </div>
+            <div class="list-group">
+              <a
+                href="#"
+                class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+              >
+                <span>John Doe</span>
+                <span class="material-symbols-outlined text-primary"> navigate_next </span>
+              </a>
+              <a
+                href="#"
+                class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+              >
+                <span>Dohn Joe</span>
+                <span class="material-symbols-outlined text-primary"> navigate_next </span>
+              </a>
+              <a
+                href="#"
+                class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+              >
+                <span>Mr. Bean</span>
+                <span class="material-symbols-outlined text-primary"> navigate_next </span>
+              </a>
+              <a
+                href="#"
+                class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+              >
+                <span>Mike Michael</span>
+                <span class="material-symbols-outlined text-primary"> navigate_next </span>
+              </a>
+              <a
+                href="#"
+                class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+              >
+                <span>Ralph Recto</span>
+                <span class="material-symbols-outlined text-primary"> navigate_next </span>
+              </a>
+
+          </section>
         </div>
       </section>
     </main>
