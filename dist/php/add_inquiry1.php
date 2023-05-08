@@ -119,74 +119,29 @@
                             <span class="material-symbols-outlined"> search </span>
                         </button>
                     </div>
+                    <?php
+                    $sql = "SELECT CLIENT_ID, CLIENT_GivenName, CLIENT_Surname FROM client";
+                    $result = mysqli_query($conn, $sql);
+                    $resultCheck = mysqli_num_rows($result);
+                    ?>
+
                     <div class="list-group overflow-y-auto" style="max-height: 60vh">
                         <!-- Client list standard -->
-                        <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                            <span>John Doe</span>
-                            <span class="material-symbols-outlined text-primary">
-                                navigate_next
-                            </span>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                            <span>Dohn Joe</span>
-                            <span class="material-symbols-outlined text-primary">
-                                navigate_next
-                            </span>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                            <span>Mr. Bean</span>
-                            <span class="material-symbols-outlined text-primary">
-                                navigate_next
-                            </span>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                            <span>Mike Michael</span>
-                            <span class="material-symbols-outlined text-primary">
-                                navigate_next
-                            </span>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                            <span>Ralph Recto</span>
-                            <span class="material-symbols-outlined text-primary">
-                                navigate_next
-                            </span>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                            <span>Mr. Bean</span>
-                            <span class="material-symbols-outlined text-primary">
-                                navigate_next
-                            </span>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                            <span>Mike Michael</span>
-                            <span class="material-symbols-outlined text-primary">
-                                navigate_next
-                            </span>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                            <span>Ralph Recto</span>
-                            <span class="material-symbols-outlined text-primary">
-                                navigate_next
-                            </span>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                            <span>Mr. Bean</span>
-                            <span class="material-symbols-outlined text-primary">
-                                navigate_next
-                            </span>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                            <span>Mike Michael</span>
-                            <span class="material-symbols-outlined text-primary">
-                                navigate_next
-                            </span>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                            <span>Ralph Recto</span>
-                            <span class="material-symbols-outlined text-primary">
-                                navigate_next
-                            </span>
-                        </a>
+                        <?php
+                        if ($resultCheck > 0) {
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                $CLIENT_ID = $row['CLIENT_ID'];
+                                echo '<a href="add_inquiry2.php?clientid=' . $CLIENT_ID . '" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                <span>' . $row['CLIENT_GivenName'] . ' ' . $row['CLIENT_Surname'] . '</span>
+                                <span class="material-symbols-outlined text-primary">
+                                    navigate_next
+                                </span>
+                            </a>';
+                            }
+                        } else {
+                            echo '<p class="text-center">No clients found</p>';
+                        }
+                        ?>
                     </div>
                 </section>
             </div>
