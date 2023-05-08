@@ -20,6 +20,7 @@
     <main class="d-flex flex-nowrap">
         <aside class="col-2 border p-2 h-100 min-vh-100 d-flex flex-column">
             <div id="site-header" class="d-flex align-items-center">
+                <link rel="preload" href="../assets/logo-black.png" as="image">
                 <img src="../assets/logo-black.png" alt="logo" height="50" width="50" />
                 <h4 class="m-2">LINK.exe</h4>
             </div>
@@ -158,7 +159,8 @@
         </section>
 
         <!-- Inquiry Content -->
-        <section id="inquiry-content" class="col-3 border p-2 px-3 bg-light">
+        <section id="inquiry-content"
+            class="col-3 border p-2 px-3 bg-light <?php echo isset($_GET['sel_inquiry']) ? '' : 'd-none'; ?>">
             <h5 class="d-flex justify-content-between align-items-center fw-bold">
                 <div class="d-flex">
                     <span class="material-symbols-outlined mx-1 mb-1">
@@ -236,7 +238,7 @@
                         <tr>
                             <td><span class="fw-bold">Client Name</span></td>
                             <td><span
-                                    class="text-muted"><?php echo $selectedInquiryClientRow['CLIENT_GivenName'],' ', $selectedInquiryClientRow['CLIENT_Surname'] ?></span>
+                                    class="text-muted"><?php echo $selectedInquiryClientRow['CLIENT_GivenName'], ' ', $selectedInquiryClientRow['CLIENT_Surname'] ?></span>
                             </td>
                         </tr>
                         <tr>
@@ -263,7 +265,15 @@
                 <div class="border my-2 p-1 rounded">
                     <!-- Officer information-->
                     <!-- If empty, place muted text that says no officer assigned yet -->
-                    <h5 class="d-flex align-items-center justify-content-between">
+                    <?php
+                    // assigned officer
+                    $selectedInquiryOfficerID = $selectedInquiryRow['OFF_ID'];
+                    $selectedInquiryOfficerQuery = "SELECT * FROM officer WHERE OFF_ID = '$selectedInquiryOfficerID'";
+                    $selectedInquiryOfficerResult = mysqli_query($conn, $selectedInquiryOfficerQuery);
+                    $selectedInquiryOfficerRow = mysqli_fetch_assoc($selectedInquiryOfficerResult);
+
+                    ?>
+                    <h5 class="d-flex align-items-center justify-content-between ">
                         <div class="d-flex">
                             <span class="material-symbols-outlined">
                                 supervisor_account
@@ -279,31 +289,35 @@
                             </button>
                         </div>
                     </h5>
-                    <table class="table table-striped">
+                    <table class="table table-striped <?php echo $selectedInquiryOfficerID != NULL ? '' : 'd-none' ?>">
                         <tr>
                             <td>
                                 <span class="fw-bold">Officer ID</span>
                             </td>
-                            <td><span class="text-muted">1</span> <br /></td>
+                            <td><span class="text-muted"><?php echo $selectedInquiryOfficerRow['OFF_ID'] ?></span>
+                                <br />
+                            </td>
                         </tr>
-                        <!-- complete the table for me -->
                         <tr>
                             <td><span class="fw-bold">Officer Name</span></td>
-                            <td><span class="text-muted">Officer Doe</span></td>
-                        </tr>
-                        <tr>
-                            <td><span class="fw-bold">Officer Address</span></td>
-                            <td><span class="text-muted">2 Jackson Ave</span></td>
+                            <td><span
+                                    class="text-muted"><?php echo $selectedInquiryOfficerRow['OFF_GivenName'], ' ', $selectedInquiryOfficerRow['OFF_Surname'] ?></span>
+                            </td>
                         </tr>
                         <tr>
                             <td><span class="fw-bold">Officer Email</span></td>
-                            <td><span class="text-muted">officerdoe@email.com</span></td>
+                            <td><span class="text-muted"><?php echo $selectedInquiryOfficerRow['OFF_EmailAdd'] ?></span>
+                            </td>
                         </tr>
                         <tr>
                             <td><span class="fw-bold">Officer Birthday</span></td>
-                            <td><span class="text-muted">January 1, 2000</span></td>
+                            <td><span class="text-muted"><?php echo ($selectedInquiryOfficerRow['OFF_DOB']) ?></span>
+                            </td>
                         </tr>
                     </table>
+                    <!-- no assigned officer -->
+                    <p class="text-muted text-center <?php echo $selectedInquiryOfficerID != NULL ? 'd-none' : '' ?>">
+                        This inquiry has no assigned officer yet.</p>
                 </div>
             </div>
         </section>

@@ -1,3 +1,5 @@
+<?php include 'add_inquiry1Code.php' ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,25 +25,25 @@
             <hr />
             <ul id="nav-contents" class="nav nav-pills flex-column mb-auto">
                 <li class="nav-item">
-                    <a href="inquirypage.html" class="nav-link py-3 rounded-4 d-flex active">
+                    <a href="inquirypage.php" class="nav-link py-3 rounded-4 d-flex active">
                         <span class="material-symbols-outlined mx-1"> inbox </span>
                         Inquiries
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="transactionspage.html" class="inactive-hover-items nav-link py-3 d-flex rounded-4">
+                    <a href="transactionspage.php" class="inactive-hover-items nav-link py-3 d-flex rounded-4">
                         <span class="material-symbols-outlined mx-1"> receipt_long </span>
                         Transactions
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="dashboardpage.html" class="inactive-hover-items nav-link py-3 d-flex rounded-4">
+                    <a href="dashboardpage.php" class="inactive-hover-items nav-link py-3 d-flex rounded-4">
                         <span class="material-symbols-outlined mx-1"> dashboard </span>
                         Dashboard
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="officerspage.html" class="inactive-hover-items nav-link py-3 d-flex rounded-4">
+                    <a href="officerspage.php" class="inactive-hover-items nav-link py-3 d-flex rounded-4">
                         <span class="material-symbols-outlined mx-1">
                             supervised_user_circle
                         </span>
@@ -49,7 +51,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="memberspage.html" class="inactive-hover-items nav-link py-3 d-flex rounded-4">
+                    <a href="memberspage.php" class="inactive-hover-items nav-link py-3 d-flex rounded-4">
                         <span class="material-symbols-outlined mx-1"> groups </span>
                         Members
                     </a>
@@ -72,32 +74,33 @@
                     &VeryThinSpace; Create New Inquiry
                 </h4>
             </div>
+            <!-- Add new client -->
             <div class="d-flex flex-nowrap">
                 <section class="col-6 container p-2 bg-white border rounded">
                     <h5 class="fw-bold">Enter client details</h5>
-                    <form action="">
+                    <form method="post">
                         <div class="mb-3">
                             <label for="" class="form-label">Given Name</label>
-                            <input type="text" name="" id=" " class="form-control" />
+                            <input type="text" name="givenname" id=" " class="form-control" />
                         </div>
                         <div class="mb-3">
-                            <label for="" class="form-label">Surname Name</label>
-                            <input type="text" name="" id=" " class="form-control" />
+                            <label for="" class="form-label">Surname</label>
+                            <input type="text" name="surname" id=" " class="form-control" />
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Address</label>
-                            <input type="email" name="" id=" " class="form-control" />
+                            <input type="text" name="address" id=" " class="form-control" />
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Email</label>
-                            <input type="email" name="" id=" " class="form-control" />
+                            <input type="email" name="email" id=" " class="form-control" />
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Contact Number</label>
-                            <input type="tel" name="" id=" " class="form-control" />
+                            <input type="tel" name="contact" id=" " class="form-control" />
                         </div>
                         <div class="mt-4 d-flex justify-content-end">
-                            <button type="submit" class="btn btn-primary d-flex align-items-center">
+                            <button name="add-client" class="btn btn-primary d-flex align-items-center">
                                 Next
                                 <span class="material-symbols-outlined"> navigate_next </span>
                             </button>
