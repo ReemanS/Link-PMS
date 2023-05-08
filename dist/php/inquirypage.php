@@ -183,12 +183,14 @@
                             Inquiry Information
                         </div>
                         <div class="d-flex">
-                            <button class="btn rounded-pill btn-sm btn-info d-flex mx-1">
+                            <a class="btn rounded-pill btn-sm btn-info d-flex mx-1"
+                                href="edit_inquiry.php?inquiryid=<?php echo $selectedInquiry ?>">
                                 <span class="material-symbols-outlined"> edit </span>
-                            </button>
-                            <button class="btn rounded-pill btn-sm btn-danger d-flex mx-1">
+                            </a>
+                            <a class="btn rounded-pill btn-sm btn-danger d-flex mx-1"
+                                href="delete_inquiry.php?inquiryid=<?php echo $selectedInquiry ?>">
                                 <span class="material-symbols-outlined"> delete </span>
-                            </button>
+                            </a>
                         </div>
                     </h5>
                     <table class="table table-striped">
@@ -222,12 +224,10 @@
                             Client Information
                         </div>
                         <div class="d-flex">
-                            <button class="btn rounded-pill btn-sm btn-info d-flex mx-1">
+                            <a class="btn rounded-pill btn-sm btn-info d-flex mx-1"
+                                href="edit_client.php?clientid=<?php echo $selectedInquiryClientID?>">
                                 <span class="material-symbols-outlined"> edit </span>
-                            </button>
-                            <button class="btn rounded-pill btn-sm btn-danger d-flex mx-1">
-                                <span class="material-symbols-outlined"> delete </span>
-                            </button>
+                            </a>
                         </div>
                     </h5>
                     <table class="table table-striped">
