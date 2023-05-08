@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="../style/main.min.css" />
     <link rel="stylesheet" href="../../node_modules\bootstrap-icons\font\bootstrap-icons.min.css" />
     <!-- Google Material Icons -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,300,0,-25" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,300,0,-25" />
     <title>New Inquiry</title>
 </head>
 
@@ -59,7 +60,8 @@
             </ul>
             <hr />
             <div id="site-user" class="d-flex align-items-center">
-                <img src="../assets/zuc.jpg" alt="link officer" class="img-thumbnail rounded-5 me-2" width="60" height="60" />
+                <img src="../assets/zuc.jpg" alt="link officer" class="img-thumbnail rounded-5 me-2" width="60"
+                    height="60" />
                 <div id="site-user-info">
                     <h6 class="m-0 fw-bold">Mark Zuckerburg</h6>
                     <small>LINK.exe officer</small>
@@ -77,7 +79,7 @@
             <!-- Add new client -->
             <div class="d-flex flex-nowrap">
                 <section class="col-6 container p-2 bg-white border rounded">
-                    <h5 class="fw-bold">Enter client details</h5>
+                    <h5 class="fw-bold">Enter details of new client</h5>
                     <form method="post">
                         <div class="mb-3">
                             <label for="" class="form-label">Given Name</label>
@@ -113,23 +115,39 @@
                 <section class="col-4 container p-2 bg-white border rounded">
                     <!-- Select from list of clients, each item is a li with anchor tag -->
                     <h5 class="fw-bold">Select from existing clients</h5>
-                    <div class="input-group mb-2">
-                        <input type="text" class="form-control" placeholder="Search for a client..." />
-                        <button class="btn btn-outline-primary d-flex" type="button">
+                    <form method="post" class="input-group mb-2">
+                        <input name="search-client-searchbar" type="text" class="form-control"
+                            placeholder="Search for a client..." />
+                        <button name="search-client-btn" class="btn btn-outline-primary d-flex">
                             <span class="material-symbols-outlined"> search </span>
                         </button>
-                    </div>
+                    </form>
                     <?php
-                    $sql = "SELECT CLIENT_ID, CLIENT_GivenName, CLIENT_Surname FROM client";
-                    $result = mysqli_query($conn, $sql);
-                    $resultCheck = mysqli_num_rows($result);
+                    // create a function that returns a list of clients based on search conditions
+                    function filterClients($query)
+                    {
+                        include 'session.php';
+                        $filterResult = mysqli_query($conn, $query);
+                        return $filterResult;
+                    }
+
+                    if (isset($_POST['search-client-btn'])) {
+                        $search = $_POST['search-client-searchbar'];
+                        $query = "SELECT CLIENT_ID, CLIENT_GivenName, CLIENT_Surname FROM client WHERE CLIENT_GivenName LIKE '%$search%' OR CLIENT_Surname LIKE '%$search%'";
+                        $filterResult = filterClients($query);
+                    } else {
+                        $query = "SELECT CLIENT_ID, CLIENT_GivenName, CLIENT_Surname FROM client ORDER BY CLIENT_ID ASC";
+                        $filterResult = filterClients($query);
+                    }
+
+                    $resultCheck = mysqli_num_rows($filterResult);
                     ?>
 
                     <div class="list-group overflow-y-auto" style="max-height: 60vh">
                         <!-- Client list standard -->
                         <?php
                         if ($resultCheck > 0) {
-                            while ($row = mysqli_fetch_assoc($result)) {
+                            while ($row = mysqli_fetch_assoc($filterResult)) {
                                 $CLIENT_ID = $row['CLIENT_ID'];
                                 echo '<a href="add_inquiry2.php?clientid=' . $CLIENT_ID . '" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
                                 <span>' . $row['CLIENT_GivenName'] . ' ' . $row['CLIENT_Surname'] . '</span>
