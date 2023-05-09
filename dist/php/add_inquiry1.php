@@ -26,6 +26,12 @@
             <hr />
             <ul id="nav-contents" class="nav nav-pills flex-column mb-auto">
                 <li class="nav-item">
+                    <a href="dashboardpage.php" class="inactive-hover-items nav-link py-3 d-flex rounded-4">
+                        <span class="material-symbols-outlined mx-1"> dashboard </span>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="inquirypage.php" class="nav-link py-3 rounded-4 d-flex active">
                         <span class="material-symbols-outlined mx-1"> inbox </span>
                         Inquiries
@@ -37,12 +43,7 @@
                         Transactions
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="dashboardpage.php" class="inactive-hover-items nav-link py-3 d-flex rounded-4">
-                        <span class="material-symbols-outlined mx-1"> dashboard </span>
-                        Dashboard
-                    </a>
-                </li>
+
                 <li class="nav-item">
                     <a href="officerspage.php" class="inactive-hover-items nav-link py-3 d-flex rounded-4">
                         <span class="material-symbols-outlined mx-1">

@@ -11,8 +11,7 @@
     <link rel="stylesheet" href="../style/main.min.css" />
     <link rel="stylesheet" href="../../node_modules\bootstrap-icons\font\bootstrap-icons.min.css" />
     <!-- Google Material Icons -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,300,0,-25" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,300,0,-25" />
     <title>Inquiries</title>
 </head>
 
@@ -27,6 +26,12 @@
             <hr />
             <ul id="nav-contents" class="nav nav-pills flex-column mb-auto">
                 <li class="nav-item">
+                    <a href="dashboardpage.php" class="inactive-hover-items nav-link py-3 d-flex rounded-4">
+                        <span class="material-symbols-outlined mx-1"> dashboard </span>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="inquirypage.php" class="nav-link py-3 rounded-4 d-flex active">
                         <span class="material-symbols-outlined mx-1"> inbox </span>
                         Inquiries
@@ -38,12 +43,7 @@
                         Transactions
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="dashboardpage.php" class="inactive-hover-items nav-link py-3 d-flex rounded-4">
-                        <span class="material-symbols-outlined mx-1"> dashboard </span>
-                        Dashboard
-                    </a>
-                </li>
+
                 <li class="nav-item">
                     <a href="officerspage.php" class="inactive-hover-items nav-link py-3 d-flex rounded-4">
                         <span class="material-symbols-outlined mx-1">
@@ -61,8 +61,7 @@
             </ul>
             <hr />
             <div id="site-user" class="d-flex align-items-center">
-                <img src="../assets/zuc.jpg" alt="link officer" class="img-thumbnail rounded-5 me-2" width="60"
-                    height="60" />
+                <img src="../assets/zuc.jpg" alt="link officer" class="img-thumbnail rounded-5 me-2" width="60" height="60" />
                 <div id="site-user-info">
                     <h6 class="m-0 fw-bold">Mark Zuckerburg</h6>
                     <small>LINK.exe officer</small>
@@ -105,8 +104,7 @@
 
                 <!-- Search inquiry -->
                 <form class="input-group" method="post">
-                    <input type="text" class="form-control" name="inquiry-searchbar"
-                        placeholder="Search for an inquiry..." />
+                    <input type="text" class="form-control" name="inquiry-searchbar" placeholder="Search for an inquiry..." />
                     <button name="inquiry-search-btn" class="btn btn-outline-primary d-flex">
                         <span class="material-symbols-outlined"> search </span>
                     </button>
@@ -129,29 +127,24 @@
 
                                 $selectedInquiry = isset($_GET['sel_inquiry']) ? $_GET['sel_inquiry'] : ''; // extension of code found below
                         ?>
-                        <!-- LIST ITEM STANDARD -->
-                        <li
-                            class="p-2 my-1 border rounded <?php echo ($row['INQ_ID'] == $selectedInquiry ? "bg-primary" : 'inactive-hover-items') ?>">
-                            <a href="inquirypage.php?sel_inquiry=<?php echo $row['INQ_ID'] ?>"
-                                class="d-flex text-decoration-none">
-                                <div class="d-flex flex-row">
-                                    <div>
-                                        <img src="../assets/ClientAvatar.webp" alt="avatar"
-                                            class="d-flex align-self-center me-3" width="60" />
-                                    </div>
-                                    <div class="d-flex flex-column">
-                                        <span
-                                            class="fw-bold <?php echo ($row['INQ_ID'] == $selectedInquiry ? "text-white" : '') ?>"><?php echo $clientName ?></span>
-                                        <span
-                                            class="small <?php echo ($row['INQ_ID'] == $selectedInquiry ? "text-white" : 'text-muted ') ?>"><?php echo $details ?></span>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
+                                <!-- LIST ITEM STANDARD -->
+                                <li class="p-2 my-1 border rounded <?php echo ($row['INQ_ID'] == $selectedInquiry ? "bg-primary" : 'inactive-hover-items') ?>">
+                                    <a href="inquirypage.php?sel_inquiry=<?php echo $row['INQ_ID'] ?>" class="d-flex text-decoration-none">
+                                        <div class="d-flex flex-row">
+                                            <div>
+                                                <img src="../assets/ClientAvatar.webp" alt="avatar" class="d-flex align-self-center me-3" width="60" />
+                                            </div>
+                                            <div class="d-flex flex-column">
+                                                <span class="fw-bold <?php echo ($row['INQ_ID'] == $selectedInquiry ? "text-white" : '') ?>"><?php echo $clientName ?></span>
+                                                <span class="small <?php echo ($row['INQ_ID'] == $selectedInquiry ? "text-white" : 'text-muted ') ?>"><?php echo $details ?></span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
 
-                        <?php }
+                            <?php }
                         } else { ?>
-                        <p class="fw-bold text-center">No inquiries found.</p>
+                            <p class="fw-bold text-center">No inquiries found.</p>
                         <?php } ?>
                     </ul>
                 </div>
@@ -159,8 +152,7 @@
         </section>
 
         <!-- Inquiry Content -->
-        <section id="inquiry-content"
-            class="col-3 border p-2 px-3 bg-light <?php echo isset($_GET['sel_inquiry']) ? '' : 'd-none'; ?>">
+        <section id="inquiry-content" class="col-3 border p-2 px-3 bg-light <?php echo isset($_GET['sel_inquiry']) ? '' : 'd-none'; ?>">
             <h5 class="d-flex justify-content-between align-items-center fw-bold">
                 <div class="d-flex">
                     <span class="material-symbols-outlined mx-1 mb-1">
@@ -183,12 +175,10 @@
                             Inquiry Information
                         </div>
                         <div class="d-flex">
-                            <a class="btn rounded-pill btn-sm btn-info d-flex mx-1"
-                                href="edit_inquiry.php?inquiryid=<?php echo $selectedInquiry ?>">
+                            <a class="btn rounded-pill btn-sm btn-info d-flex mx-1" href="edit_inquiry.php?inquiryid=<?php echo $selectedInquiry ?>">
                                 <span class="material-symbols-outlined"> edit </span>
                             </a>
-                            <a class="btn rounded-pill btn-sm btn-danger d-flex mx-1"
-                                href="delete_inquiry.php?inquiryid=<?php echo $selectedInquiry ?>">
+                            <a class="btn rounded-pill btn-sm btn-danger d-flex mx-1" href="delete_inquiryCode.php?inquiryid=<?php echo $selectedInquiry ?>">
                                 <span class="material-symbols-outlined"> delete </span>
                             </a>
                         </div>
@@ -224,8 +214,7 @@
                             Client Information
                         </div>
                         <div class="d-flex">
-                            <a class="btn rounded-pill btn-sm btn-info d-flex mx-1"
-                                href="edit_client.php?clientid=<?php echo $selectedInquiryClientID ?>">
+                            <a class="btn rounded-pill btn-sm btn-info d-flex mx-1" href="edit_client.php?clientid=<?php echo $selectedInquiryClientID ?>">
                                 <span class="material-symbols-outlined"> edit </span>
                             </a>
                         </div>
@@ -237,26 +226,22 @@
                         </tr>
                         <tr>
                             <td><span class="fw-bold">Client Name</span></td>
-                            <td><span
-                                    class="text-muted"><?php echo $selectedInquiryClientRow['CLIENT_GivenName'], ' ', $selectedInquiryClientRow['CLIENT_Surname'] ?></span>
+                            <td><span class="text-muted"><?php echo $selectedInquiryClientRow['CLIENT_GivenName'], ' ', $selectedInquiryClientRow['CLIENT_Surname'] ?></span>
                             </td>
                         </tr>
                         <tr>
                             <td><span class="fw-bold">Client Address</span></td>
-                            <td><span
-                                    class="text-muted"><?php echo $selectedInquiryClientRow['CLIENT_Address'] ?></span>
+                            <td><span class="text-muted"><?php echo $selectedInquiryClientRow['CLIENT_Address'] ?></span>
                             </td>
                         </tr>
                         <tr>
                             <td><span class="fw-bold">Client Email</span></td>
-                            <td><span
-                                    class="text-muted"><?php echo $selectedInquiryClientRow['CLIENT_EmailAddress'] ?></span>
+                            <td><span class="text-muted"><?php echo $selectedInquiryClientRow['CLIENT_EmailAddress'] ?></span>
                             </td>
                         </tr>
                         <tr>
                             <td><span class="fw-bold">Client Phone</span></td>
-                            <td><span
-                                    class="text-muted"><?php echo $selectedInquiryClientRow['CLIENT_ContactNo'] ?></span>
+                            <td><span class="text-muted"><?php echo $selectedInquiryClientRow['CLIENT_ContactNo'] ?></span>
                             </td>
                         </tr>
                     </table>
@@ -281,12 +266,10 @@
                             &VeryThinSpace; Assigned Officer
                         </div>
                         <div class="d-flex">
-                            <a class="btn rounded-pill btn-sm btn-info d-flex mx-1"
-                                href="edit_officer.php?inquiryid=<?php echo $selectedInquiry ?>">
+                            <a class="btn rounded-pill btn-sm btn-info d-flex mx-1" href="edit_officer.php?inquiryid=<?php echo $selectedInquiry ?>">
                                 <span class="material-symbols-outlined"> edit </span>
                             </a>
-                            <a class="btn rounded-pill btn-sm btn-danger d-flex mx-1"
-                                href="delete_officerCode.php?inquiryid=<?php echo $selectedInquiry ?>">
+                            <a class="btn rounded-pill btn-sm btn-danger d-flex mx-1" href="delete_officerCode.php?inquiryid=<?php echo $selectedInquiry ?>">
                                 <span class="material-symbols-outlined"> delete </span>
                             </a>
                         </div>
@@ -302,8 +285,7 @@
                         </tr>
                         <tr>
                             <td><span class="fw-bold">Officer Name</span></td>
-                            <td><span
-                                    class="text-muted"><?php echo $selectedInquiryOfficerRow['OFF_GivenName'], ' ', $selectedInquiryOfficerRow['OFF_Surname'] ?></span>
+                            <td><span class="text-muted"><?php echo $selectedInquiryOfficerRow['OFF_GivenName'], ' ', $selectedInquiryOfficerRow['OFF_Surname'] ?></span>
                             </td>
                         </tr>
                         <tr>

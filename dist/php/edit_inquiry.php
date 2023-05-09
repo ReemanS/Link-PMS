@@ -29,7 +29,8 @@ if (isset($_POST["save-inquiry"])) {
     <link rel="stylesheet" href="../style/main.min.css" />
     <link rel="stylesheet" href="../../node_modules\bootstrap-icons\font\bootstrap-icons.min.css" />
     <!-- Google Material Icons -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,300,0,-25" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,300,0,-25" />
     <title>Edit Inquiry</title>
 </head>
 
@@ -43,6 +44,12 @@ if (isset($_POST["save-inquiry"])) {
             <hr />
             <ul id="nav-contents" class="nav nav-pills flex-column mb-auto">
                 <li class="nav-item">
+                    <a href="dashboardpage.php" class="inactive-hover-items nav-link py-3 d-flex rounded-4">
+                        <span class="material-symbols-outlined mx-1"> dashboard </span>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="inquirypage.php" class="nav-link py-3 rounded-4 d-flex active">
                         <span class="material-symbols-outlined mx-1"> inbox </span>
                         Inquiries
@@ -54,12 +61,7 @@ if (isset($_POST["save-inquiry"])) {
                         Transactions
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="dashboardpage.php" class="inactive-hover-items nav-link py-3 d-flex rounded-4">
-                        <span class="material-symbols-outlined mx-1"> dashboard </span>
-                        Dashboard
-                    </a>
-                </li>
+
                 <li class="nav-item">
                     <a href="officerspage.php" class="inactive-hover-items nav-link py-3 d-flex rounded-4">
                         <span class="material-symbols-outlined mx-1">
@@ -77,7 +79,8 @@ if (isset($_POST["save-inquiry"])) {
             </ul>
             <hr />
             <div id="site-user" class="d-flex align-items-center">
-                <img src="../assets/zuc.jpg" alt="link officer" class="img-thumbnail rounded-5 me-2" width="60" height="60" />
+                <img src="../assets/zuc.jpg" alt="link officer" class="img-thumbnail rounded-5 me-2" width="60"
+                    height="60" />
                 <div id="site-user-info">
                     <h6 class="m-0 fw-bold">Mark Zuckerburg</h6>
                     <small>LINK.exe officer</small>
@@ -96,7 +99,8 @@ if (isset($_POST["save-inquiry"])) {
                 <section class="col-6 container p-3 bg-white border rounded">
                     <h5 class="fw-bold text-center">Re-enter inquiry details</h5>
                     <form method="post">
-                        <textarea name="inquirydetails" id="" class="form-control mb-2" placeholder="Enter inquiry details..." rows="12"><?php echo $INQ_DETAILS; ?></textarea>
+                        <textarea name="inquirydetails" id="" class="form-control mb-2"
+                            placeholder="Enter inquiry details..." rows="12"><?php echo $INQ_DETAILS; ?></textarea>
                         <div class="d-flex justify-content-center">
                             <button name="save-inquiry" class="btn btn-lg btn-primary d-flex align-items-center">
                                 Save Inquiry
