@@ -18,5 +18,11 @@ $info: #fad02c;
   }
 }
 
+.bg-hero {
+  background-image: url("../assets/Link-group-photo-cropped-fade2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  max-height: 400px;
+}
 // Import bootstrap
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
