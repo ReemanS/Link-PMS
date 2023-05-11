@@ -198,6 +198,12 @@ if (isset($_GET['sel_trans'])) {
           Selected Transaction
         </div>
       </h5>
+      <a class="btn btn-info btn-lg d-flex align-items-center justify-content-center w-100 mb-2" href="dashboard-addproject.php?transid=<?php echo $SEL_TRANS ?>">
+        <span class="material-symbols-outlined me-1">
+          add_chart
+        </span>
+        Launch Project
+      </a>
       <section class="overflow-y-auto" style="max-height: 90vh">
         <div class="border my-2 p-1 rounded">
           <!-- Transaction information -->
@@ -207,6 +213,7 @@ if (isset($_GET['sel_trans'])) {
               Transaction Information
             </div>
           </h5>
+
           <table class="table table-striped">
             <tr>
               <td><span class="fw-bold">Transaction ID</span></td>
