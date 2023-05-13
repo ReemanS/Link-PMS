@@ -1,4 +1,3 @@
-<?php include 'add_inquiry1Code.php' ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -87,7 +86,7 @@
             <!-- Add new client -->
             <div class="d-flex flex-nowrap">
                 <section class="col-6 container p-2 bg-white border rounded">
-                    <h5 class="fw-bold">Enter details of officer</h5>
+                    <h5 class="fw-bold">Enter officer details</h5>
                     <form method="post">
                         <div class="mb-3">
                             <label for="" class="form-label">Officer ID</label>
@@ -118,11 +117,8 @@
                     </form>
                 </section>
                 
-
-
-
-
              <?php
+             include 'session.php';
              if (isset($_POST["add-officer"])) {
              $OFF_ID = $_POST["OFF_ID"];
              $OFF_GivenName = $_POST["OFF_GivenName"];
@@ -132,12 +128,10 @@
 
              $sql = "INSERT INTO officer (OFF_ID, OFF_GivenName, OFF_Surname, OFF_EmailAdd, OFF_DOB) VALUES ('$OFF_ID', '$OFF_GivenName', '$OFF_Surname', '$OFF_EmailAdd', '$OFF_DOB')";
              $result = mysqli_query($conn, $sql);
-             $getOfficerIdQuery = "SELECT OFF_ID FROM officer WHERE OFF_GivenName = '$OFF_GivenName' AND OFF_Surname = '$OFF_Surname' AND OFF_EmailAdd = '$OFF_EmailAdd' AND OFF_DOB = '$OFF_DOB'";
-             $getOfficertId = mysqli_query($conn, $getOfficerIdQuery);
-             $row = mysqli_fetch_assoc($getOfficerId);
-             $OFF_ID = $row["OFF_ID"];
+             $selectedOfficerID = "SELECT OFF_ID FROM officer WHERE OFF_GivenName = '$OFF_GivenName' AND OFF_Surname = '$OFF_Surname' AND OFF_EmailAdd = '$OFF_EmailAdd' AND OFF_DOB = '$OFF_DOB'";
+             $getOfficerIdQuery = mysqli_query($conn, $getOfficerIdQuery);
              mysqli_close($conn);
-             header("location:officerspage.php?clientid=$OFF_ID");
+             header("location:officerspage.php");
               }
             ?>
 

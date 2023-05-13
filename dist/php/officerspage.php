@@ -124,72 +124,28 @@ if (isset($_GET['sel_trans'])) {
     </section>
   </main>
 
-  <div class="height d-flex justify-content-center align-items-center">
-    <div class="card p-3">
-        <div class="d-flex justify-content-between align-items-center ">
-            <div class="mt-2">
-                <h2>Narisz Khyll<br>Benalber</h2>
-                <div class="mt-3">
-                    <h4>Secretary</h4>
-                </div>
-            </div>
-            <div class="image">
-                <img src="../assets/logo-black.png" width="150">
-            </div>
-        </div>
-    </div>
-</div>
 
 
 
-
-
-<div class="border my-2 p-1 rounded">
-                    <!-- client information -->
-                    <?php
-                    $selectedInquiryClientID = $selectedInquiryRow['CLIENT_ID'];
-                    $selectedInquiryClientQuery = "SELECT * FROM client WHERE CLIENT_ID = '$selectedInquiryClientID'";
-                    $selectedInquiryClientResult = mysqli_query($conn, $selectedInquiryClientQuery);
-                    $selectedInquiryClientRow = mysqli_fetch_assoc($selectedInquiryClientResult);
-                    ?>
-                    <h5 class="d-flex align-items-center justify-content-between">
-                        <div class="d-flex">
-                            <span class="material-symbols-outlined mx-1"> person </span>
-                            Client Information
-                        </div>
-                        <div class="d-flex">
-                            <a class="btn rounded-pill btn-sm btn-info d-flex mx-1"
-                                href="edit_client.php?clientid=<?php echo $selectedInquiryClientID ?>">
-                                <span class="material-symbols-outlined"> edit </span>
-                            </a>
-                        </div>
-                    </h5>
-                    <table class="table table-striped">
-                        <tr>
-                            <td><span class="fw-bold">Officer ID</span></td>
-                            <td><span class="text-muted"><?php echo $selectedOfficerID ?></span></td>
-                        </tr>
-                        <tr>
-                            <td><span class="fw-bold">Officer Name</span></td>
-                            <td><span
-                                    class="text-muted"><?php echo $getOfficerId['CLIENT_GivenName'], ' ', $selectedInquiryClientRow['CLIENT_Surname'] ?></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><span class="fw-bold">Officer Surname</span></td>
-                            <td><span
-                                    class="text-muted"><?php echo $selectedInquiryClientRow['CLIENT_Address'] ?></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><span class="fw-bold">Officer Birthday</span></td>
-                            <td><span
-                                    class="text-muted"><?php echo $selectedInquiryClientRow['CLIENT_EmailAddress'] ?></span>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-
+<tbody>
+        <?php
+        include 'session.php';
+        $display = "SELECT * FROM officer";
+        $data = $conn->query($display);
+        while($row = mysqli_fetch_array($result))
+        {
+            ?>
+            <tr>
+                <td><?php echo $row['OFF_ID']?></td>
+                <td><?php echo $row['OFF_GivenName']?></td>
+                <td><?php echo $row['OFF_Surname']?></td>
+                <td><?php echo $row['OFF_EmailAdd']?></td>
+                <td><?php echo $row['OFF_DOB']?></td>
+        </td>
+        </tr>
+         <?php
+        }?>
+        </tbody> 
 
 
 
