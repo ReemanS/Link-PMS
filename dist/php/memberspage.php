@@ -39,7 +39,7 @@ if (isset($_GET['sel_trans'])) {
   <link rel="stylesheet" href="../../node_modules\bootstrap-icons\font\bootstrap-icons.min.css" />
   <!-- Google Material Icons -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,300,0,-25" />
-  <title>Equipments</title>
+  <title>Members</title>
 </head>
 
 <body>
@@ -113,7 +113,7 @@ if (isset($_GET['sel_trans'])) {
           <h5 class="d-flex justify-content-between align-items-center fw-bold">
             <div class="d-flex">
               <span class="material-symbols-outlined mx-1 mb-1"> list </span>
-              Equipments
+              Members
             </div>
           </h5>
         </div>
