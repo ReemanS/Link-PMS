@@ -8,9 +8,11 @@
              $OFF_DOB = $_POST["OFF_DOB"];
 
              $sql = "INSERT INTO officer (OFF_ID, OFF_GivenName, OFF_Surname, OFF_EmailAdd, OFF_DOB) VALUES ('$OFF_ID', '$OFF_GivenName', '$OFF_Surname', '$OFF_EmailAdd', '$OFF_DOB')";
+             $result = mysqli_query($conn, $sql);
              header("location:officerspage.php");
               }
             ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -95,7 +97,7 @@
                 </h4>
             </div>
             
-            <!-- Add new client -->
+            <!-- Add new officer -->
             <div class="d-flex flex-nowrap">
                 <section class="col-6 container p-2 bg-white border rounded">
                     <h5 class="fw-bold">Enter officer details</h5>

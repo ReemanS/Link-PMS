@@ -142,6 +142,16 @@ return $filter_Result;
             <td><?php echo $row['OFF_Surname']?></td>
             <td><?php echo $row['OFF_EmailAdd']?></td>
             <td><?php echo $row['OFF_DOB']?></td>
+            <td><div class="d-flex">
+                            <a class="btn rounded-pill btn-sm btn-info d-flex mx-1"
+                                href="edit_officer.php?inquiryid=<?php echo $selectedInquiry ?>">
+                                <span class="material-symbols-outlined"> edit </span>
+                            </a>
+                            <a class="btn rounded-pill btn-sm btn-danger d-flex mx-1"
+                                href="officerspage_deletecode.php?">
+                                <span class="material-symbols-outlined"> delete </span>
+                            </a>
+                        </div></td>
           </tr>
           <?php
           }?>
