@@ -112,7 +112,7 @@ if (isset($_GET['sel_trans'])) {
         <div>
           <h5 class="d-flex justify-content-between align-items-center fw-bold">
             <div class="d-flex">
-              <span class="material-symbols-outlined mx-1 mb-1"> list </span>
+            <span class="material-symbols-outlined mx-1"> groups </span>
               Members
             </div>
           </h5>
