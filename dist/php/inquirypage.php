@@ -62,11 +62,11 @@
 
                 <li class="nav-item">
           <a href="equipmentspage.php" class="inactive-hover-items nav-link py-3 d-flex rounded-4">
-            <span class="material-symbols-outlined mx-1"> groups </span>
+          <span class="material-symbols-outlined">videocam</span>
             Equipments
           </a>
         </li>
-        
+
             </ul>
             <hr />
             <div id="site-user" class="d-flex align-items-center">
