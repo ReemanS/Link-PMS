@@ -32,7 +32,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="inquirypage.php" class="nav-link py-3 rounded-4 d-flex active">
+                    <a href="inquirypage.php" class="inactive-hover-items nav-link py-3 d-flex rounded-4">
                         <span class="material-symbols-outlined mx-1"> inbox </span>
                         Inquiries
                     </a>
@@ -45,7 +45,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="officerspage.php" class="inactive-hover-items nav-link py-3 d-flex rounded-4">
+                    <a href="officerspage.php" class="nav-link py-3 d-flex rounded-4 active">
                         <span class="material-symbols-outlined mx-1">
                             supervised_user_circle
                         </span>
@@ -80,97 +80,68 @@
             <div class="d-flex align-items-center mb-2">
                 <h4 class="d-flex align-items-center fw-bold">
                     <span class="material-symbols-outlined"> add_circle </span>
-                    &VeryThinSpace; Create New Inquiry
+                    &VeryThinSpace; Add Officer
                 </h4>
             </div>
+            
             <!-- Add new client -->
             <div class="d-flex flex-nowrap">
                 <section class="col-6 container p-2 bg-white border rounded">
-                    <h5 class="fw-bold">Enter details of new client</h5>
+                    <h5 class="fw-bold">Enter details of officer</h5>
                     <form method="post">
                         <div class="mb-3">
-                            <label for="" class="form-label">Given Name</label>
-                            <input type="text" name="givenname" id=" " class="form-control" />
+                            <label for="" class="form-label">Officer ID</label>
+                            <input type="text" name="OFF_ID" id=" " class="form-control" />
                         </div>
                         <div class="mb-3">
-                            <label for="" class="form-label">Surname</label>
-                            <input type="text" name="surname" id=" " class="form-control" />
+                            <label for="" class="form-label">Officer Name</label>
+                            <input type="text" name="OFF_GivenName" id=" " class="form-control" />
                         </div>
                         <div class="mb-3">
-                            <label for="" class="form-label">Address</label>
-                            <input type="text" name="address" id=" " class="form-control" />
+                            <label for="" class="form-label">Officer Surname</label>
+                            <input type="text" name="OFF_Surname" id=" " class="form-control" />
                         </div>
                         <div class="mb-3">
-                            <label for="" class="form-label">Email</label>
-                            <input type="email" name="email" id=" " class="form-control" />
+                            <label for="" class="form-label">Officer Email</label>
+                            <input type="text" name="OFF_EmailAdd" id=" " class="form-control" />
                         </div>
                         <div class="mb-3">
-                            <label for="" class="form-label">Contact Number</label>
-                            <input type="tel" name="contact" id=" " class="form-control" />
+                            <label for="" class="form-label">Officer Birthday</label>
+                            <input type="date" name="OFF_DOB" id=" " class="form-control" />
                         </div>
                         <div class="mt-4 d-flex justify-content-end">
-                            <button name="add-client" class="btn btn-primary d-flex align-items-center">
-                                Next
+                            <button name="add-officer" class="btn btn-primary d-flex align-items-center">
+                                Save
                                 <span class="material-symbols-outlined"> navigate_next </span>
                             </button>
                         </div>
                     </form>
                 </section>
-                <section class="col-2 d-flex align-items-center justify-content-center">
-                    <span class="display-6">OR</span>
-                </section>
-                <section class="col-4 container p-2 bg-white border rounded">
-                    <!-- Select from list of clients, each item is a li with anchor tag -->
-                    <h5 class="fw-bold">Select from existing clients</h5>
-                    <form method="post" class="input-group mb-2">
-                        <input name="search-client-searchbar" type="text" class="form-control"
-                            placeholder="Search for a client..." />
-                        <button name="search-client-btn" class="btn btn-outline-primary d-flex">
-                            <span class="material-symbols-outlined"> search </span>
-                        </button>
-                    </form>
-                    <?php
-                    // create a function that returns a list of clients based on search conditions
-                    function filterClients($query)
-                    {
-                        include 'session.php';
-                        $filterResult = mysqli_query($conn, $query);
-                        return $filterResult;
-                    }
+                
 
-                    if (isset($_POST['search-client-btn'])) {
-                        $search = $_POST['search-client-searchbar'];
-                        $query = "SELECT CLIENT_ID, CLIENT_GivenName, CLIENT_Surname FROM client WHERE CLIENT_GivenName LIKE '%$search%' OR CLIENT_Surname LIKE '%$search%'";
-                        $filterResult = filterClients($query);
-                    } else {
-                        $query = "SELECT CLIENT_ID, CLIENT_GivenName, CLIENT_Surname FROM client ORDER BY CLIENT_ID ASC";
-                        $filterResult = filterClients($query);
-                    }
 
-                    $resultCheck = mysqli_num_rows($filterResult);
-                    ?>
 
-                    <div class="list-group overflow-y-auto" style="max-height: 60vh">
-                        <!-- Client list standard -->
-                        <?php
-                        if ($resultCheck > 0) {
-                            while ($row = mysqli_fetch_assoc($filterResult)) {
-                                $CLIENT_ID = $row['CLIENT_ID'];
-                                echo '<a href="add_inquiry2.php?clientid=' . $CLIENT_ID . '" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                                <span>' . $row['CLIENT_GivenName'] . ' ' . $row['CLIENT_Surname'] . '</span>
-                                <span class="material-symbols-outlined text-primary">
-                                    navigate_next
-                                </span>
-                            </a>';
-                            }
-                        } else {
-                            echo '<p class="text-center">No clients found</p>';
-                        }
-                        ?>
-                    </div>
-                </section>
-            </div>
-        </section>
+
+             <?php
+             if (isset($_POST["add-officer"])) {
+             $OFF_ID = $_POST["OFF_ID"];
+             $OFF_GivenName = $_POST["OFF_GivenName"];
+             $OFF_Surname = $_POST["OFF_Surname"];
+             $OFF_EmailAdd = $_POST["OFF_EmailAdd"];
+             $OFF_DOB = $_POST["OFF_DOB"];
+
+             $sql = "INSERT INTO officer (OFF_ID, OFF_GivenName, OFF_Surname, OFF_EmailAdd, OFF_DOB) VALUES ('$OFF_ID', '$OFF_GivenName', '$OFF_Surname', '$OFF_EmailAdd', '$OFF_DOB')";
+             $result = mysqli_query($conn, $sql);
+             $getOfficerIdQuery = "SELECT OFF_ID FROM officer WHERE OFF_GivenName = '$OFF_GivenName' AND OFF_Surname = '$OFF_Surname' AND OFF_EmailAdd = '$OFF_EmailAdd' AND OFF_DOB = '$OFF_DOB'";
+             $getOfficertId = mysqli_query($conn, $getOfficerIdQuery);
+             $row = mysqli_fetch_assoc($getOfficerId);
+             $OFF_ID = $row["OFF_ID"];
+             mysqli_close($conn);
+             header("location:officerspage.php?clientid=$OFF_ID");
+              }
+            ?>
+
+
     </main>
     <!-- Bootstrap & Popper scripts -->
     <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>

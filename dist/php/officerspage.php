@@ -65,14 +65,14 @@ if (isset($_GET['sel_trans'])) {
           </a>
         </li>
         <li class="nav-item">
-          <a href="transactionspage.php" class="nav-link py-3 d-flex rounded-4 active">
+          <a href="transactionspage.php" class="inactive-hover-items nav-link py-3 d-flex rounded-4">
             <span class="material-symbols-outlined mx-1"> receipt_long </span>
             Transactions
           </a>
         </li>
 
         <li class="nav-item">
-          <a href="officerspage.php" class="inactive-hover-items nav-link py-3 d-flex rounded-4">
+          <a href="officerspage.php" class="nav-link py-3 d-flex rounded-4 active">
             <span class="material-symbols-outlined mx-1">
               supervised_user_circle
             </span>
@@ -92,8 +92,6 @@ if (isset($_GET['sel_trans'])) {
             Equipments
           </a>
         </li>
-
-
       </ul>
       <hr />
       <div id="site-user" class="d-flex align-items-center">
@@ -107,7 +105,7 @@ if (isset($_GET['sel_trans'])) {
     <aside class="col-2"></aside>
 
     <!-- Officers Dashboard -->
-    <section class="col-7 border p-2">
+    <section class="col-10 border p-2">
       <div>
         <div>
           <h5 class="d-flex justify-content-between align-items-center fw-bold">
@@ -117,10 +115,83 @@ if (isset($_GET['sel_trans'])) {
             </span>
               Officers
             </div>
+            <a href="add_officers.php" class="btn btn-primary d-flex">
+                            <span class="material-symbols-outlined"> add </span>
+                            Add Officers
+                        </a>
           </h5>
         </div>
     </section>
   </main>
+
+  <div class="height d-flex justify-content-center align-items-center">
+    <div class="card p-3">
+        <div class="d-flex justify-content-between align-items-center ">
+            <div class="mt-2">
+                <h2>Narisz Khyll<br>Benalber</h2>
+                <div class="mt-3">
+                    <h4>Secretary</h4>
+                </div>
+            </div>
+            <div class="image">
+                <img src="../assets/logo-black.png" width="150">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="border my-2 p-1 rounded">
+                    <!-- client information -->
+                    <?php
+                    $selectedInquiryClientID = $selectedInquiryRow['CLIENT_ID'];
+                    $selectedInquiryClientQuery = "SELECT * FROM client WHERE CLIENT_ID = '$selectedInquiryClientID'";
+                    $selectedInquiryClientResult = mysqli_query($conn, $selectedInquiryClientQuery);
+                    $selectedInquiryClientRow = mysqli_fetch_assoc($selectedInquiryClientResult);
+                    ?>
+                    <h5 class="d-flex align-items-center justify-content-between">
+                        <div class="d-flex">
+                            <span class="material-symbols-outlined mx-1"> person </span>
+                            Client Information
+                        </div>
+                        <div class="d-flex">
+                            <a class="btn rounded-pill btn-sm btn-info d-flex mx-1"
+                                href="edit_client.php?clientid=<?php echo $selectedInquiryClientID ?>">
+                                <span class="material-symbols-outlined"> edit </span>
+                            </a>
+                        </div>
+                    </h5>
+                    <table class="table table-striped">
+                        <tr>
+                            <td><span class="fw-bold">Officer ID</span></td>
+                            <td><span class="text-muted"><?php echo $selectedOfficerID ?></span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="fw-bold">Officer Name</span></td>
+                            <td><span
+                                    class="text-muted"><?php echo $getOfficerId['CLIENT_GivenName'], ' ', $selectedInquiryClientRow['CLIENT_Surname'] ?></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="fw-bold">Officer Surname</span></td>
+                            <td><span
+                                    class="text-muted"><?php echo $selectedInquiryClientRow['CLIENT_Address'] ?></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="fw-bold">Officer Birthday</span></td>
+                            <td><span
+                                    class="text-muted"><?php echo $selectedInquiryClientRow['CLIENT_EmailAddress'] ?></span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+
+
 
   <!-- Bootstrap & Popper scripts -->
   <script src="../../node_modules/@popperjs/core/dist/umd/popper.min.js"></script>

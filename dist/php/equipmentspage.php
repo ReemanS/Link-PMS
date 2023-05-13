@@ -65,7 +65,7 @@ if (isset($_GET['sel_trans'])) {
           </a>
         </li>
         <li class="nav-item">
-          <a href="transactionspage.php" class="nav-link py-3 d-flex rounded-4 active">
+          <a href="transactionspage.php" class="inactive-hover-items nav-link py-3 rounded-4 d-flex">
             <span class="material-symbols-outlined mx-1"> receipt_long </span>
             Transactions
           </a>
@@ -87,7 +87,7 @@ if (isset($_GET['sel_trans'])) {
         </li>
 
         <li class="nav-item">
-          <a href="equipmentspage.php" class="inactive-hover-items nav-link py-3 d-flex rounded-4">
+          <a href="equipmentspage.php" class="nav-link py-3 d-flex rounded-4 active">
           <span class="material-symbols-outlined">videocam</span>
             Equipments
           </a>
@@ -118,6 +118,20 @@ if (isset($_GET['sel_trans'])) {
           </h5>
         </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   </main>
 
   <!-- Bootstrap & Popper scripts -->
