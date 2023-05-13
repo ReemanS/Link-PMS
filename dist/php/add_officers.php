@@ -11,7 +11,6 @@
              header("location:officerspage.php");
               }
             ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -130,7 +129,6 @@
                     </form>
                 </section>
                 
-
 
     </main>
     <!-- Bootstrap & Popper scripts -->

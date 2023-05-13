@@ -1,29 +1,19 @@
 <?php
-include "session.php";
-function filterTransactions($query)
+if(isset($_POST['search']))
 {
-  include "session.php";
-  $filterResult = mysqli_query($conn, $query);
-  return $filterResult;
+$s = $_POST['valueToSearch'];
+$query = "SELECT * FROM officer WHERE OFF_ID LIKE '%$s%'";
+$search_result = filterTable($query);
 }
-if (isset($_POST['searchtrans-btn'])) {
-  $SEARCHVAL = $_POST['searchtrans-sb'];
-  $query = "SELECT * FROM transaction WHERE TRANS_Name LIKE '%$SEARCHVAL%'";
-  $filterResult = filterTransactions($query);
-} else {
-  $query = "SELECT * FROM transaction ORDER BY TRANS_ID ASC";
-  $filterResult = filterTransactions($query);
+else {
+$query = "SELECT * FROM `officer` ORDER BY OFF_ID DESC";
+$search_result = filterTable($query);
 }
-
-$SEL_TRANS = isset($_GET['sel_trans']) ? $_GET['sel_trans'] : '';
-$sqlSel = "SELECT * FROM transaction WHERE TRANS_ID = '$SEL_TRANS'";
-$resultSel = mysqli_query($conn, $sqlSel);
-$rowSel = mysqli_fetch_assoc($resultSel);
-
-if (isset($_GET['sel_trans'])) {
-  $sqlSelClient = "SELECT CLIENT_GivenName, CLIENT_Surname FROM client WHERE CLIENT_ID = '$rowSel[CLIENT_ID]'";
-  $resultSelClient = mysqli_query($conn, $sqlSelClient);
-  $rowSelClient = mysqli_fetch_assoc($resultSelClient);
+function filterTable($query)
+{
+include 'session.php';
+$filter_Result = mysqli_query($conn, $query);
+return $filter_Result;
 }
 ?>
 
@@ -105,7 +95,9 @@ if (isset($_GET['sel_trans'])) {
     <aside class="col-2"></aside>
 
     <!-- Officers Dashboard -->
-    <section class="col-10 border p-2">
+    <div class= "d-flex flex-column col-10">
+    <div class= "d-flex justify-content-between">
+    <section class="col-12 border p-2">
       <div>
         <div>
           <h5 class="d-flex justify-content-between align-items-center fw-bold">
@@ -117,19 +109,52 @@ if (isset($_GET['sel_trans'])) {
             </div>
             <a href="add_officers.php" class="btn btn-primary d-flex">
                             <span class="material-symbols-outlined"> add </span>
-                            Add Officers
+                            Add Officer
                         </a>
           </h5>
         </div>
     </section>
+     </div>
+
+  <div class="card-body">
+    <div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Officer ID</th>
+            <th>Officer Name</th>
+            <th>Officer Surname</th>
+            <th>Officer Email</th>
+            <th>Officer Birthday</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php
+          include 'session.php';
+          $display = "SELECT * FROM officer";
+          $data = $conn->query($display);
+          while($row = mysqli_fetch_array($search_result))
+          {
+          ?>
+          <tr>
+            <td><?php echo $row['OFF_ID']?></td>
+            <td><?php echo $row['OFF_GivenName']?></td>
+            <td><?php echo $row['OFF_Surname']?></td>
+            <td><?php echo $row['OFF_EmailAdd']?></td>
+            <td><?php echo $row['OFF_DOB']?></td>
+          </tr>
+          <?php
+          }?>
+        </tbody>
+      </table>
+    </div>
+  </div>
+        </div>
   </main>
 
-
-
-
+  
   <!-- Bootstrap & Popper scripts -->
   <script src="../../node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
   <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
-
 </html>

@@ -107,7 +107,7 @@ if (isset($_GET['sel_trans'])) {
     <aside class="col-2"></aside>
 
     <!-- Officers Dashboard -->
-    <section class="col-7 border p-2">
+    <section class="col-10 border p-2">
       <div>
         <div>
           <h5 class="d-flex justify-content-between align-items-center fw-bold">
