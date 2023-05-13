@@ -1,3 +1,16 @@
+<?php
+             include 'session.php';
+             if (isset($_POST["add-officer"])) {
+             $OFF_ID = $_POST["OFF_ID"];
+             $OFF_GivenName = $_POST["OFF_GivenName"];
+             $OFF_Surname = $_POST["OFF_Surname"];
+             $OFF_EmailAdd = $_POST["OFF_EmailAdd"];
+             $OFF_DOB = $_POST["OFF_DOB"];
+
+             $sql = "INSERT INTO officer (OFF_ID, OFF_GivenName, OFF_Surname, OFF_EmailAdd, OFF_DOB) VALUES ('$OFF_ID', '$OFF_GivenName', '$OFF_Surname', '$OFF_EmailAdd', '$OFF_DOB')";
+             header("location:officerspage.php");
+              }
+            ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -117,23 +130,6 @@
                     </form>
                 </section>
                 
-             <?php
-             include 'session.php';
-             if (isset($_POST["add-officer"])) {
-             $OFF_ID = $_POST["OFF_ID"];
-             $OFF_GivenName = $_POST["OFF_GivenName"];
-             $OFF_Surname = $_POST["OFF_Surname"];
-             $OFF_EmailAdd = $_POST["OFF_EmailAdd"];
-             $OFF_DOB = $_POST["OFF_DOB"];
-
-             $sql = "INSERT INTO officer (OFF_ID, OFF_GivenName, OFF_Surname, OFF_EmailAdd, OFF_DOB) VALUES ('$OFF_ID', '$OFF_GivenName', '$OFF_Surname', '$OFF_EmailAdd', '$OFF_DOB')";
-             $result = mysqli_query($conn, $sql);
-             $selectedOfficerID = "SELECT OFF_ID FROM officer WHERE OFF_GivenName = '$OFF_GivenName' AND OFF_Surname = '$OFF_Surname' AND OFF_EmailAdd = '$OFF_EmailAdd' AND OFF_DOB = '$OFF_DOB'";
-             $getOfficerIdQuery = mysqli_query($conn, $getOfficerIdQuery);
-             mysqli_close($conn);
-             header("location:officerspage.php");
-              }
-            ?>
 
 
     </main>

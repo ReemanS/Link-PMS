@@ -127,28 +127,6 @@ if (isset($_GET['sel_trans'])) {
 
 
 
-<tbody>
-        <?php
-        include 'session.php';
-        $display = "SELECT * FROM officer";
-        $data = $conn->query($display);
-        while($row = mysqli_fetch_array($result))
-        {
-            ?>
-            <tr>
-                <td><?php echo $row['OFF_ID']?></td>
-                <td><?php echo $row['OFF_GivenName']?></td>
-                <td><?php echo $row['OFF_Surname']?></td>
-                <td><?php echo $row['OFF_EmailAdd']?></td>
-                <td><?php echo $row['OFF_DOB']?></td>
-        </td>
-        </tr>
-         <?php
-        }?>
-        </tbody> 
-
-
-
   <!-- Bootstrap & Popper scripts -->
   <script src="../../node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
   <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
