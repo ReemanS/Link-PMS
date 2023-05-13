@@ -97,7 +97,7 @@ if (isset($_GET['sel_trans'])) {
     </aside>
     <aside class="col-2"></aside>
 
-    <!-- Transaction Dashboard -->
+    <!-- Officers Dashboard -->
     <section class="col-7 border p-2">
       <div>
         <div>
