@@ -145,7 +145,7 @@ if (isset($_POST['save-officer'])) {
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Date of Birth</label>
-                            <input type="email" name="OFF_DOB" id=" " class="form-control"
+                            <input type="date" name="OFF_DOB" id=" " class="form-control"
                                 value="<?php echo $OFF_DOB ?>" />
                         </div>
                         <div class="mt-4 d-flex justify-content-center">
