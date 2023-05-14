@@ -1,19 +1,26 @@
+
 <?php
-if(isset($_POST['search']))
-{
-$s = $_POST['valueToSearch'];
-$query = "SELECT * FROM officer WHERE OFF_ID LIKE '%$s%'";
-$search_result = filterTable($query);
-}
-else {
-$query = "SELECT * FROM `officer` ORDER BY OFF_ID DESC";
-$search_result = filterTable($query);
-}
-function filterTable($query)
-{
 include 'session.php';
-$filter_Result = mysqli_query($conn, $query);
-return $filter_Result;
+$OFF_ID = $_GET["officerid"];
+$sql = "SELECT * FROM officer WHERE OFF_ID = '$OFF_ID'";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
+
+$OFF_GIVENNAME = $row["OFF_GivenName"];
+$OFF_SURNAME = $row["OFF_Surname"];
+$OFF_EMAILADD = $row["OFF_EmailAdd"];
+$OFF_DOB = $row["OFF_DOB"];
+
+if (isset($_POST['save-officer'])) {
+  $OFF_GIVENNAME = $_POST["OFF_GivenName"];
+  $OFF_SURNAME = $_POST["OFF_Surname"];
+  $OFF_EMAILADD = $_POST["OFF_EmailAdd"];
+  $OFF_DOB = $_POST["OFF_DOB"];
+
+  $sql = "UPDATE officer SET OFF_GivenName = '$OFF_GIVENNAME', OFF_Surname = '$OFF_SURNAME', OFF_EmailAdd = '$OFF_EMAILADD', OFF_DOB = '$OFF_DOB' WHERE OFF_ID = '$OFF_ID'";
+  $result = mysqli_query($conn, $sql);
+  mysqli_close($conn);
+  header("location:officerspage.php");
 }
 ?>
 
@@ -117,54 +124,39 @@ return $filter_Result;
      </div>
 
 
-
-     <div class="card-body">
-  <div class="table-responsive">
-    <table class="table table-striped table-hover">
-      <thead>
-        <tr>
-          <th>Officer ID</th>
-          <th>Officer Name</th>
-          <th>Officer Surname</th>
-          <th>Officer Email</th>
-          <th>Officer Birthday</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php
-        include 'session.php';
-        $display = "SELECT * FROM officer";
-        $data = $conn->query($display);
-        while($row = mysqli_fetch_array($data))
-        {
-        ?>
-        <tr>
-          <td><?php echo $row['OFF_ID']?></td>
-          <td><?php echo $row['OFF_GivenName']?></td>
-          <td><?php echo $row['OFF_Surname']?></td>
-          <td><?php echo $row['OFF_EmailAdd']?></td>
-          <td><?php echo $row['OFF_DOB']?></td>
-          <td>
-            <div class="d-flex">
-            <a class="btn rounded-pill btn-sm btn-info d-flex mx-1"
-                                href="officerspage_updatecode.php?officerid=<?php echo $row['OFF_ID'] ?>">
-                                <span class="material-symbols-outlined"> edit </span>
-                            </a>
-              <form action="officerspage_deletecode.php" method="GET" onsubmit="return confirm('Are you sure you want to delete this record?');">
-                <input type="hidden" name="OFF_ID" value="<?php echo $row['OFF_ID'] ?>">
-                <button type="submit" class="btn rounded-pill btn-sm btn-danger d-flex mx-1">
-                  <span class="material-symbols-outlined"> delete </span>
-                </button>
-              </form>
+<div class="d-flex flex-nowrap">
+                <section class="col-6 container p-3 bg-white border rounded">
+                    <h5 class="fw-bold">Re-enter officer details</h5>
+                    <form method="post">
+                        <div class="mb-3">
+                            <label for="" class="form-label">Given Name</label>
+                            <input type="text" name="OFF_GivenName" id=" " class="form-control"
+                                value="<?php echo $OFF_GIVENNAME ?>" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Surname</label>
+                            <input type="text" name="OFF_Surname" id=" " class="form-control"
+                                value="<?php echo $OFF_SURNAME ?>" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Email Address</label>
+                            <input type="text" name="OFF_EmaiAdd" id=" " class="form-control"
+                                value="<?php echo $OFF_EMAILADD ?>" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Date of Birth</label>
+                            <input type="email" name="OFF_DOB" id=" " class="form-control"
+                                value="<?php echo $OFF_DOB ?>" />
+                        </div>
+                        <div class="mt-4 d-flex justify-content-center">
+                            <button name="save-officer" class="btn btn-lg btn-primary d-flex align-items-center">
+                                Save
+                            </button>
+                        </div>
+                    </form>
+                </section>
             </div>
-          </td>
-        </tr>
-        <?php
-        }?>
-      </tbody>
-    </table>
-  </div>
-      </main>
+</main>
 
   
   <!-- Bootstrap & Popper scripts -->
