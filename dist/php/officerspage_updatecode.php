@@ -140,7 +140,7 @@ if (isset($_POST['save-officer'])) {
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Email Address</label>
-                            <input type="email" name="OFF_EmaiAdd" id=" " class="form-control"
+                            <input type="email" name="OFF_EmailAdd" id=" " class="form-control"
                                 value="<?php echo $OFF_EMAILADD ?>" />
                         </div>
                         <div class="mb-3">
