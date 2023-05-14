@@ -115,6 +115,10 @@ if (isset($_GET['sel_trans'])) {
             <span class="material-symbols-outlined">videocam</span>
               Equipments
             </div>
+            <a href=".php" class="btn btn-primary d-flex">
+                            <span class="material-symbols-outlined"> add </span>
+                            Add Equipment
+                        </a>
           </h5>
         </div>
     </section>
