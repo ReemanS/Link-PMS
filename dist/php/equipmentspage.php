@@ -106,24 +106,77 @@ if (isset($_GET['sel_trans'])) {
     </aside>
     <aside class="col-2"></aside>
 
-    <!-- Officers Dashboard -->
-    <section class="col-10 border p-2">
+
+  <!-- Officers Dashboard -->
+  <div class= "d-flex flex-column col-10">
+    <div class= "d-flex justify-content-between">
+    <section class="col-12 border p-2">
       <div>
         <div>
           <h5 class="d-flex justify-content-between align-items-center fw-bold">
             <div class="d-flex">
-            <span class="material-symbols-outlined">videocam</span>
-              Equipments
+            <span class="material-symbols-outlined mx-1">
+              supervised_user_circle
+            </span>
+              Officers
             </div>
-            <a href=".php" class="btn btn-primary d-flex">
+            <a href="add_equipments.php" class="btn btn-primary d-flex">
                             <span class="material-symbols-outlined"> add </span>
                             Add Equipment
                         </a>
           </h5>
         </div>
     </section>
+     </div>
 
 
+
+     <div class="card-body">
+  <div class="table-responsive">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Equipment ID</th>
+          <th>Equipment Name</th>
+          <th>Type</th>
+          <th>Last used date</th>
+          <th>Owner</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+        include 'session.php';
+        $display = "SELECT * FROM equipment";
+        $data = $conn->query($display);
+        while($row = mysqli_fetch_array($data))
+        {
+        ?>
+        <tr>
+          <td><?php echo $row['EQ_ID']?></td>
+          <td><?php echo $row['EQ_Name']?></td>
+          <td><?php echo $row['EQ_Type']?></td>
+          <td><?php echo $row['EQ_LastUsedDate']?></td>
+          <td><?php echo $row['EQ_Owner']?></td>
+          <td>
+            <div class="d-flex">
+            <a class="btn rounded-pill btn-sm btn-info d-flex mx-1"
+                                href="officerspage_updatecode.php?officerid=<?php echo $row['OFF_ID'] ?>">
+                                <span class="material-symbols-outlined"> edit </span>
+                            </a>
+              <form action="officerspage_deletecode.php" method="GET" onsubmit="return confirm('Are you sure you want to delete this record?');">
+                <input type="hidden" name="OFF_ID" value="<?php echo $row['OFF_ID'] ?>">
+                <button type="submit" class="btn rounded-pill btn-sm btn-danger d-flex mx-1">
+                  <span class="material-symbols-outlined"> delete </span>
+                </button>
+              </form>
+            </div>
+          </td>
+        </tr>
+        <?php
+        }?>
+      </tbody>
+    </table>
+  </div>
 
 
 
