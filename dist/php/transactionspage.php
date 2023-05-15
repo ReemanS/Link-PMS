@@ -88,7 +88,7 @@ if (isset($_GET['sel_trans'])) {
 
         <li class="nav-item">
           <a href="equipmentspage.php" class="inactive-hover-items nav-link py-3 d-flex rounded-4">
-            <span class="material-symbols-outlined">videocam</span>
+            <span class="material-symbols-outlined mx-1">videocam</span>
             Equipments
           </a>
         </li>
@@ -185,7 +185,12 @@ if (isset($_GET['sel_trans'])) {
               <?php
               }
             } else { ?>
-              <p class="fw-bold text-center">No transactions found.</p>
+            <div class="d-flex">
+              <span class="fw-bold mt-4 ms-1">No transactions found.</span>
+            </div>
+              
+            
+              
             <?php
             }
             ?>

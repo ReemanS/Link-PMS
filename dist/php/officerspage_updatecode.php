@@ -85,7 +85,7 @@ if (isset($_POST['save-officer'])) {
 
         <li class="nav-item">
           <a href="equipmentspage.php" class="inactive-hover-items nav-link py-3 d-flex rounded-4">
-          <span class="material-symbols-outlined">videocam</span>
+          <span class="material-symbols-outlined mx-1">videocam</span>
             Equipments
           </a>
         </li>
@@ -114,10 +114,6 @@ if (isset($_POST['save-officer'])) {
             </span>
               Officers
             </div>
-            <a href="add_officers.php" class="btn btn-primary d-flex">
-                            <span class="material-symbols-outlined"> add </span>
-                            Add Officer
-                        </a>
           </h5>
         </div>
     </section>

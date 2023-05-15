@@ -1,31 +1,5 @@
-<?php
-include "session.php";
-function filterTransactions($query)
-{
-  include "session.php";
-  $filterResult = mysqli_query($conn, $query);
-  return $filterResult;
-}
-if (isset($_POST['searchtrans-btn'])) {
-  $SEARCHVAL = $_POST['searchtrans-sb'];
-  $query = "SELECT * FROM transaction WHERE TRANS_Name LIKE '%$SEARCHVAL%'";
-  $filterResult = filterTransactions($query);
-} else {
-  $query = "SELECT * FROM transaction ORDER BY TRANS_ID ASC";
-  $filterResult = filterTransactions($query);
-}
 
-$SEL_TRANS = isset($_GET['sel_trans']) ? $_GET['sel_trans'] : '';
-$sqlSel = "SELECT * FROM transaction WHERE TRANS_ID = '$SEL_TRANS'";
-$resultSel = mysqli_query($conn, $sqlSel);
-$rowSel = mysqli_fetch_assoc($resultSel);
 
-if (isset($_GET['sel_trans'])) {
-  $sqlSelClient = "SELECT CLIENT_GivenName, CLIENT_Surname FROM client WHERE CLIENT_ID = '$rowSel[CLIENT_ID]'";
-  $resultSelClient = mysqli_query($conn, $sqlSelClient);
-  $rowSelClient = mysqli_fetch_assoc($resultSelClient);
-}
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -88,7 +62,7 @@ if (isset($_GET['sel_trans'])) {
 
         <li class="nav-item">
           <a href="equipmentspage.php" class="nav-link py-3 d-flex rounded-4 active">
-          <span class="material-symbols-outlined">videocam</span>
+          <span class="material-symbols-outlined mx-1">videocam</span>
             Equipments
           </a>
         </li>
@@ -160,11 +134,11 @@ if (isset($_GET['sel_trans'])) {
           <td>
             <div class="d-flex">
             <a class="btn rounded-pill btn-sm btn-info d-flex mx-1"
-                                href="officerspage_updatecode.php?officerid=<?php echo $row['OFF_ID'] ?>">
+                                href="equipmentspage_updatecode.php?equipmentid=<?php echo $row['EQ_ID'] ?>">
                                 <span class="material-symbols-outlined"> edit </span>
                             </a>
-              <form action="officerspage_deletecode.php" method="GET" onsubmit="return confirm('Are you sure you want to delete this record?');">
-                <input type="hidden" name="OFF_ID" value="<?php echo $row['OFF_ID'] ?>">
+              <form action="equipmentspage_deletecode.php" method="GET" onsubmit="return confirm('Are you sure you want to delete this record?');">
+                <input type="hidden" name="EQ_ID" value="<?php echo $row['EQ_ID'] ?>">
                 <button type="submit" class="btn rounded-pill btn-sm btn-danger d-flex mx-1">
                   <span class="material-symbols-outlined"> delete </span>
                 </button>
@@ -177,19 +151,6 @@ if (isset($_GET['sel_trans'])) {
       </tbody>
     </table>
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   </main>

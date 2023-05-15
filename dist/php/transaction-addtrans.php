@@ -89,7 +89,7 @@ if (isset($_POST['newtransaction-btn'])) {
 
                 <li class="nav-item">
           <a href="equipmentspage.php" class="inactive-hover-items nav-link py-3 d-flex rounded-4">
-            <span class="material-symbols-outlined">videocam</span>
+            <span class="material-symbols-outlined mx-1">videocam</span>
             Equipments
           </a>
         </li>

@@ -86,7 +86,7 @@ if (isset($_POST['filterall-btn'])) {
 
                 <li class="nav-item">
                     <a href="equipmentspage.php" class="inactive-hover-items nav-link py-3 d-flex rounded-4">
-                        <span class="material-symbols-outlined">videocam</span>
+                        <span class="material-symbols-outlined mx-1">videocam</span>
                         Equipments
                     </a>
                 </li>
@@ -137,6 +137,7 @@ if (isset($_POST['filterall-btn'])) {
                         <div class="mt-3 row row-cols-3 g-0">
                             <!-- Card standard start -->
                             <?php
+                            if (mysqli_num_rows($result) != 0) {
                             while ($row = mysqli_fetch_assoc($result)) {
                                 $sql2 = "SELECT * FROM member WHERE PROJ_ID = " . $row['PROJ_ID'];
                                 $memberCount = mysqli_num_rows(mysqli_query($conn, $sql2));
@@ -191,6 +192,10 @@ if (isset($_POST['filterall-btn'])) {
                                         </div>
                                     </article>
                                 </div>
+                            <?php
+                            } } else {
+                            ?>
+                            <p class="text-muted fs-4 mt-2">No transactions found</p>
                             <?php
                             }
                             ?>

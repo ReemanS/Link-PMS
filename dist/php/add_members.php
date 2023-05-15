@@ -73,7 +73,7 @@
                 </li>
                 <li class="nav-item">
           <a href="equipmentspage.php" class="inactive-hover-items nav-link py-3 d-flex rounded-4">
-          <span class="material-symbols-outlined">videocam</span>
+          <span class="material-symbols-outlined mx-1">videocam</span>
             Equipments
           </a>
         </li>
@@ -102,10 +102,6 @@
                 <section class="col-6 container p-2 bg-white border rounded">
                     <h5 class="fw-bold">Enter member details</h5>
                     <form method="post">
-                        <div class="mb-3">
-                            <label for="" class="form-label">Member ID</label>
-                            <input type="text" name="MEM_ID" id=" " class="form-control" />
-                        </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Member Name</label>
                             <input type="text" name="MEM_GivenName" id=" " class="form-control" />
