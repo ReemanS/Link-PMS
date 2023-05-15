@@ -3,22 +3,22 @@ include "session.php";
 $sql = "SELECT * FROM project ORDER BY PROJ_ID ASC";
 function filterProjects($query)
 {
-  include "session.php";
-  $filterResult = mysqli_query($conn, $query);
-  return $filterResult;
+    include "session.php";
+    $filterResult = mysqli_query($conn, $query);
+    return $filterResult;
 }
 
 if (isset($_POST['filterall-btn'])) {
-  $sql = "SELECT * FROM project ORDER BY PROJ_ID ASC";
-  $result = filterProjects($sql);
+    $sql = "SELECT * FROM project ORDER BY PROJ_ID ASC";
+    $result = filterProjects($sql);
 } else if (isset($_POST['ongoing-btn'])) {
-  $sql = "SELECT * FROM project WHERE PROJ_STATUS = 'Ongoing' ORDER BY PROJ_ID ASC";
-  $result = filterProjects($sql);
+    $sql = "SELECT * FROM project WHERE PROJ_STATUS = 'Ongoing' ORDER BY PROJ_ID ASC";
+    $result = filterProjects($sql);
 } else if (isset($_POST['completed-btn'])) {
-  $sql = "SELECT * FROM project WHERE PROJ_STATUS = 'Completed' ORDER BY PROJ_ID ASC";
-  $result = filterProjects($sql);
+    $sql = "SELECT * FROM project WHERE PROJ_STATUS = 'Completed' ORDER BY PROJ_ID ASC";
+    $result = filterProjects($sql);
 } else {
-  $result = mysqli_query($conn, $sql);
+    $result = mysqli_query($conn, $sql);
 }
 ?>
 
@@ -34,8 +34,7 @@ if (isset($_POST['filterall-btn'])) {
 
     <link rel="stylesheet" href="../../node_modules\bootstrap-icons\font\bootstrap-icons.min.css" />
     <!-- Google Material Icons -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,300,0,-25" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,300,0,-25" />
     <!-- Animate.css -->
     <link rel="stylesheet" href="../../node_modules/animate.css/animate.min.css" />
     <title>Dashboard</title>
@@ -86,16 +85,15 @@ if (isset($_POST['filterall-btn'])) {
                 </li>
 
                 <li class="nav-item">
-          <a href="equipmentspage.php" class="inactive-hover-items nav-link py-3 d-flex rounded-4">
-            <span class="material-symbols-outlined">videocam</span>
-            Equipments
-          </a>
-        </li>
+                    <a href="equipmentspage.php" class="inactive-hover-items nav-link py-3 d-flex rounded-4">
+                        <span class="material-symbols-outlined">videocam</span>
+                        Equipments
+                    </a>
+                </li>
             </ul>
             <hr />
             <div id="site-user" class="d-flex align-items-center">
-                <img src="../assets/zuc.jpg" alt="link officer" class="img-thumbnail rounded-5 me-2" width="60"
-                    height="60" />
+                <img src="../assets/zuc.jpg" alt="link officer" class="img-thumbnail rounded-5 me-2" width="60" height="60" />
                 <div id="site-user-info">
                     <h6 class="m-0 fw-bold">Mark Zuckerburg</h6>
                     <small>LINK.exe officer</small>
@@ -106,8 +104,7 @@ if (isset($_POST['filterall-btn'])) {
 
         <section class="col-10 p-2 bg-hero mw-100">
             <div class="mx-5 my-1">
-                <h1 class="text-bg-primary fw-bold bg-opacity-50 p-2 rounded animate__animated animate__fadeIn"
-                    style="width: 34%">
+                <h1 class="text-bg-primary fw-bold bg-opacity-50 p-2 rounded animate__animated animate__fadeIn" style="width: 34%">
                     Hello there, Mark!
                 </h1>
                 <div class="my-5">&nbsp;</div>
@@ -140,68 +137,63 @@ if (isset($_POST['filterall-btn'])) {
                         <div class="mt-3 row row-cols-3 g-0">
                             <!-- Card standard start -->
                             <?php
-              while ($row = mysqli_fetch_assoc($result)) {
-                $sql2 = "SELECT * FROM member WHERE PROJ_ID = " . $row['PROJ_ID'];
-                $memberCount = mysqli_num_rows(mysqli_query($conn, $sql2));
-              ?>
-                            <div class="col">
-                                <article class="card m-1 rounded-5">
-                                    <div class="card-header bg-primary rounded-top-5 d-flex align-items-center">
-                                        <a class="col-10 fs-5 text-white fw-bold text-decoration-none" href="#">
-                                            <?php echo $row['PROJ_Name'] ?>
-                                        </a>
-                                        <div class="col-2 text-center">
-                                            <div class="dropend">
-                                                <button class="btn text-primary text-white dropdown-toggle"
-                                                    data-bs-toggle="dropdown"></button>
-                                                <ul class="dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item"
-                                                            href="dashboard-projectdetails.php?projid=<?php echo $row['PROJ_ID'] ?>">More
-                                                            details</a>
-                                                    </li>
-                                                    <hr />
-                                                    <li>
-                                                        <a class="dropdown-item"
-                                                            href="dashboard-editproject.php?projid=<?php echo $row['PROJ_ID'] ?>">Edit</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item text-danger"
-                                                            href="dashboard-deleteproject.php?projid=<?php echo $row['PROJ_ID'] ?>">Delete</a>
-                                                    </li>
-                                                </ul>
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                $sql2 = "SELECT * FROM member WHERE PROJ_ID = " . $row['PROJ_ID'];
+                                $memberCount = mysqli_num_rows(mysqli_query($conn, $sql2));
+                            ?>
+                                <div class="col">
+                                    <article class="card m-1 rounded-5">
+                                        <div class="card-header bg-primary rounded-top-5 d-flex align-items-center">
+                                            <div class="col-10 fs-5 text-white fw-bold text-decoration-none">
+                                                <?php echo $row['PROJ_Name'] ?>
+                                            </div>
+                                            <div class="col-2 text-center">
+                                                <div class="dropend">
+                                                    <button class="btn text-primary text-white dropdown-toggle" data-bs-toggle="dropdown"></button>
+                                                    <ul class="dropdown-menu">
+                                                        <li>
+                                                            <a class="dropdown-item" href="dashboard-projectdetails.php?projid=<?php echo $row['PROJ_ID'] ?>">More
+                                                                details</a>
+                                                        </li>
+                                                        <hr />
+                                                        <li>
+                                                            <a class="dropdown-item" href="dashboard-editproject.php?projid=<?php echo $row['PROJ_ID'] ?>">Edit</a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="dropdown-item text-danger" href="dashboard-deleteproject.php?projid=<?php echo $row['PROJ_ID'] ?>">Delete</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="card-body overflow-y-auto" style="max-height: 150px">
-                                        <span class="d-flex align-items-center">
-                                            <span class="material-symbols-outlined me-1">
-                                                calendar_month
+                                        <div class="card-body overflow-y-auto" style="max-height: 150px">
+                                            <span class="d-flex align-items-center">
+                                                <span class="material-symbols-outlined me-1">
+                                                    calendar_month
+                                                </span>
+                                                <?php echo $row['PROJ_StartDate'] ?> - <?php echo $row['PROJ_EndDate'] ?>
                                             </span>
-                                            <?php echo $row['PROJ_StartDate'] ?> - <?php echo $row['PROJ_EndDate'] ?>
-                                        </span>
-                                        <span class="d-flex align-items-center">
-                                            <span class="material-symbols-outlined me-1">
-                                                pin_drop
+                                            <span class="d-flex align-items-center">
+                                                <span class="material-symbols-outlined me-1">
+                                                    pin_drop
+                                                </span>
+                                                <?php echo $row['PROJ_Location'] ?>
                                             </span>
-                                            <?php echo $row['PROJ_Location'] ?>
-                                        </span>
-                                        <span class="d-flex align-items-center">
-                                            <span class="material-symbols-outlined me-1">
-                                                people
+                                            <span class="d-flex align-items-center">
+                                                <span class="material-symbols-outlined me-1">
+                                                    people
+                                                </span>
+                                                <?php echo $memberCount ?> members
                                             </span>
-                                            <?php echo $memberCount ?> members
-                                        </span>
-                                        <span
-                                            class="badge rounded-pill <?php echo ($row['PROJ_Status'] == "Ongoing") ? 'bg-info' : 'bg-success'; ?>">
-                                            <?php echo $row['PROJ_Status'] ?>
-                                        </span>
-                                    </div>
-                                </article>
-                            </div>
+                                            <span class="badge rounded-pill <?php echo ($row['PROJ_Status'] == "Ongoing") ? 'bg-info' : 'bg-success'; ?>">
+                                                <?php echo $row['PROJ_Status'] ?>
+                                            </span>
+                                        </div>
+                                    </article>
+                                </div>
                             <?php
-              }
-              ?>
+                            }
+                            ?>
                             <!-- Card standard end -->
                         </div>
                     </div>
@@ -224,8 +216,7 @@ if (isset($_POST['filterall-btn'])) {
                         </div>
 
                         <div class="bg-white rounded-4 d-flex justify-content-between p-1 border">
-                            <span
-                                class="material-symbols-outlined border border-primary rounded-pill text-primary d-flex align-items-center">
+                            <span class="material-symbols-outlined border border-primary rounded-pill text-primary d-flex align-items-center">
                                 chevron_left
                             </span>
                             <div class="d-flex justify-content-evenly">
@@ -242,8 +233,7 @@ if (isset($_POST['filterall-btn'])) {
                                     <h5>03</h5>
                                 </div>
                             </div>
-                            <span
-                                class="material-symbols-outlined border border-primary rounded-pill text-primary d-flex align-items-center">
+                            <span class="material-symbols-outlined border border-primary rounded-pill text-primary d-flex align-items-center">
                                 chevron_right
                             </span>
                         </div>
