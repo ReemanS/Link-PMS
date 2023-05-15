@@ -124,7 +124,7 @@ return $filter_Result;
       <thead>
         <tr>
           <th>Officer ID</th>
-          <th>Officer Name</th>
+          <th>Officer Given Name</th>
           <th>Officer Surname</th>
           <th>Officer Email</th>
           <th>Officer Birthday</th>

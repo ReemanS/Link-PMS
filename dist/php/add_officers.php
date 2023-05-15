@@ -103,7 +103,7 @@
                     <h5 class="fw-bold">Enter officer details</h5>
                     <form method="post">
                         <div class="mb-3">
-                            <label for="" class="form-label">Officer Name</label>
+                            <label for="" class="form-label">Officer Given Name</label>
                             <input type="text" name="OFF_GivenName" id=" " class="form-control" />
                         </div>
                         <div class="mb-3">

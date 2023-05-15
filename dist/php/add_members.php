@@ -58,7 +58,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="officerspage.php" class="nav-link py-3 d-flex rounded-4 active">
+                    <a href="officerspage.php" class="ninactive-hover-items nav-link py-3 d-flex rounded-4">
                         <span class="material-symbols-outlined mx-1">
                             supervised_user_circle
                         </span>
@@ -66,7 +66,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="memberspage.php" class="inactive-hover-items nav-link py-3 d-flex rounded-4">
+                    <a href="memberspage.php" class="nav-link py-3 d-flex rounded-4 active">
                         <span class="material-symbols-outlined mx-1"> groups </span>
                         Members
                     </a>
@@ -103,7 +103,7 @@
                     <h5 class="fw-bold">Enter member details</h5>
                     <form method="post">
                         <div class="mb-3">
-                            <label for="" class="form-label">Member Name</label>
+                            <label for="" class="form-label">Member Given Name</label>
                             <input type="text" name="MEM_GivenName" id=" " class="form-control" />
                         </div>
                         <div class="mb-3">

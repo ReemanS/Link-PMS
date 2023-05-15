@@ -108,7 +108,7 @@
       <thead>
         <tr>
           <th>Member ID</th>
-          <th>Member Name</th>
+          <th>Member Given Name</th>
           <th>Member Surname</th>
           <th>Member Email</th>
           <th>Member Birthday</th>
