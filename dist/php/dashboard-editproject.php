@@ -27,7 +27,7 @@ if (isset($_POST['saveproject-btn'])) {
             $row = mysqli_fetch_array($resultMember);
             $memberIdEval = $row['MEM_ID'];
 
-            if (!in_array($memberIdEval, $members)) {
+            if (!in_array($memberIdEval, $members) && $row['PROJ_ID'] == $PROJ_ID) {
                 $sql = "UPDATE member SET PROJ_ID = NULL WHERE MEM_ID = '$memberIdEval'";
                 $result = mysqli_query($conn, $sql);
             }

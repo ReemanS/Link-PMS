@@ -127,7 +127,7 @@ function filterTable($query)
                 <th>Officer Birthday</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody class="overflow-y-auto">
               <?php
               include 'session.php';
               $display = "SELECT * FROM officer";

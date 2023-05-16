@@ -115,7 +115,7 @@
                 <th>In use by</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody class="overflow-y-auto">
               <?php
               include 'session.php';
               $display = "SELECT * FROM equipment";

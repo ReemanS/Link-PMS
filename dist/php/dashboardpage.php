@@ -34,7 +34,8 @@ if (isset($_POST['filterall-btn'])) {
 
     <link rel="stylesheet" href="../../node_modules\bootstrap-icons\font\bootstrap-icons.min.css" />
     <!-- Google Material Icons -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,300,0,-25" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,300,0,-25" />
     <!-- Animate.css -->
     <link rel="stylesheet" href="../../node_modules/animate.css/animate.min.css" />
     <title>Dashboard</title>
@@ -93,7 +94,8 @@ if (isset($_POST['filterall-btn'])) {
             </ul>
             <hr />
             <div id="site-user" class="d-flex align-items-center">
-                <img src="../assets/zuc.jpg" alt="link officer" class="img-thumbnail rounded-5 me-2" width="60" height="60" />
+                <img src="../assets/zuc.jpg" alt="link officer" class="img-thumbnail rounded-5 me-2" width="60"
+                    height="60" />
                 <div id="site-user-info">
                     <h6 class="m-0 fw-bold">Mark Zuckerburg</h6>
                     <small>LINK.exe officer</small>
@@ -104,7 +106,8 @@ if (isset($_POST['filterall-btn'])) {
 
         <section class="col-10 p-2 bg-hero mw-100">
             <div class="mx-5 my-1">
-                <h1 class="text-bg-primary fw-bold bg-opacity-50 p-2 rounded animate__animated animate__fadeIn" style="width: 34%">
+                <h1 class="text-bg-primary fw-bold bg-opacity-50 p-2 rounded animate__animated animate__fadeIn"
+                    style="width: 34%">
                     Hello there, Mark!
                 </h1>
                 <div class="my-5">&nbsp;</div>
@@ -116,7 +119,7 @@ if (isset($_POST['filterall-btn'])) {
                                 <span class="material-symbols-outlined fs-3"> list_alt </span>
                                 &VeryThinSpace; Projects Summary
                             </h2>
-                            <div class="me-2 fs-4">May 9, 2023</div>
+                            <div class="me-2 fs-4">May 18, 2023</div>
                         </div>
                         <hr />
                         <div class="d-flex flex-row align-items-center">
@@ -142,61 +145,66 @@ if (isset($_POST['filterall-btn'])) {
                                     $sql2 = "SELECT * FROM member WHERE PROJ_ID = " . $row['PROJ_ID'];
                                     $memberCount = mysqli_num_rows(mysqli_query($conn, $sql2));
                             ?>
-                                    <div class="col">
-                                        <article class="card m-1 rounded-5">
-                                            <div class="card-header bg-primary rounded-top-5 d-flex align-items-center">
-                                                <div class="col-10 fs-5 text-white fw-bold text-decoration-none">
-                                                    <?php echo $row['PROJ_Name'] ?>
-                                                </div>
-                                                <div class="col-2 text-center">
-                                                    <div class="dropend">
-                                                        <button class="btn text-primary text-white dropdown-toggle" data-bs-toggle="dropdown"></button>
-                                                        <ul class="dropdown-menu">
-                                                            <li>
-                                                                <a class="dropdown-item" href="dashboard-projectdetails.php?projid=<?php echo $row['PROJ_ID'] ?>">More
-                                                                    details</a>
-                                                            </li>
-                                                            <hr />
-                                                            <li>
-                                                                <a class="dropdown-item" href="dashboard-editproject.php?projid=<?php echo $row['PROJ_ID'] ?>">Edit</a>
-                                                            </li>
-                                                            <li>
-                                                                <a class="dropdown-item text-danger" href="dashboard-deleteproject.php?projid=<?php echo $row['PROJ_ID'] ?>">Delete</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
+                            <div class="col">
+                                <article class="card m-1 rounded-5">
+                                    <div class="card-header bg-primary rounded-top-5 d-flex align-items-center">
+                                        <div class="col-10 fs-5 text-white fw-bold text-decoration-none">
+                                            <?php echo $row['PROJ_Name'] ?>
+                                        </div>
+                                        <div class="col-2 text-center">
+                                            <div class="dropend">
+                                                <button class="btn text-primary text-white dropdown-toggle"
+                                                    data-bs-toggle="dropdown"></button>
+                                                <ul class="dropdown-menu">
+                                                    <li>
+                                                        <a class="dropdown-item"
+                                                            href="dashboard-projectdetails.php?projid=<?php echo $row['PROJ_ID'] ?>">More
+                                                            details</a>
+                                                    </li>
+                                                    <hr />
+                                                    <li>
+                                                        <a class="dropdown-item"
+                                                            href="dashboard-editproject.php?projid=<?php echo $row['PROJ_ID'] ?>">Edit</a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item text-danger"
+                                                            href="dashboard-deleteproject.php?projid=<?php echo $row['PROJ_ID'] ?>">Delete</a>
+                                                    </li>
+                                                </ul>
                                             </div>
-                                            <div class="card-body overflow-y-auto" style="max-height: 150px">
-                                                <span class="d-flex align-items-center">
-                                                    <span class="material-symbols-outlined me-1">
-                                                        calendar_month
-                                                    </span>
-                                                    <?php echo $row['PROJ_StartDate'] ?> - <?php echo $row['PROJ_EndDate'] ?>
-                                                </span>
-                                                <span class="d-flex align-items-center">
-                                                    <span class="material-symbols-outlined me-1">
-                                                        pin_drop
-                                                    </span>
-                                                    <?php echo $row['PROJ_Location'] ?>
-                                                </span>
-                                                <span class="d-flex align-items-center">
-                                                    <span class="material-symbols-outlined me-1">
-                                                        people
-                                                    </span>
-                                                    <?php echo $memberCount ?> members
-                                                </span>
-                                                <span class="badge rounded-pill <?php echo ($row['PROJ_Status'] == "Ongoing") ? 'bg-info' : 'bg-success'; ?>">
-                                                    <?php echo $row['PROJ_Status'] ?>
-                                                </span>
-                                            </div>
-                                        </article>
+                                        </div>
                                     </div>
-                                <?php
+                                    <div class="card-body overflow-y-auto" style="max-height: 150px">
+                                        <span class="d-flex align-items-center">
+                                            <span class="material-symbols-outlined me-1">
+                                                calendar_month
+                                            </span>
+                                            <?php echo $row['PROJ_StartDate'] ?> - <?php echo $row['PROJ_EndDate'] ?>
+                                        </span>
+                                        <span class="d-flex align-items-center">
+                                            <span class="material-symbols-outlined me-1">
+                                                pin_drop
+                                            </span>
+                                            <?php echo $row['PROJ_Location'] ?>
+                                        </span>
+                                        <span class="d-flex align-items-center">
+                                            <span class="material-symbols-outlined me-1">
+                                                people
+                                            </span>
+                                            <?php echo $memberCount ?> members
+                                        </span>
+                                        <span
+                                            class="badge rounded-pill <?php echo ($row['PROJ_Status'] == "Ongoing") ? 'bg-info' : 'bg-success'; ?>">
+                                            <?php echo $row['PROJ_Status'] ?>
+                                        </span>
+                                    </div>
+                                </article>
+                            </div>
+                            <?php
                                 }
                             } else {
                                 ?>
-                                <p class="text-muted fs-4 mt-2">No projects found</p>
+                            <p class="text-muted fs-4 mt-2">No projects found</p>
                             <?php
                             }
                             ?>
@@ -222,7 +230,8 @@ if (isset($_POST['filterall-btn'])) {
                         </div>
 
                         <div class="bg-white rounded-4 d-flex justify-content-between p-1 border">
-                            <span class="material-symbols-outlined border border-primary rounded-pill text-primary d-flex align-items-center">
+                            <span
+                                class="material-symbols-outlined border border-primary rounded-pill text-primary d-flex align-items-center">
                                 chevron_left
                             </span>
                             <div class="d-flex justify-content-evenly">
@@ -239,7 +248,8 @@ if (isset($_POST['filterall-btn'])) {
                                     <h5>03</h5>
                                 </div>
                             </div>
-                            <span class="material-symbols-outlined border border-primary rounded-pill text-primary d-flex align-items-center">
+                            <span
+                                class="material-symbols-outlined border border-primary rounded-pill text-primary d-flex align-items-center">
                                 chevron_right
                             </span>
                         </div>
