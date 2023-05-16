@@ -1,4 +1,3 @@
-
 <?php
 include 'session.php';
 $OFF_ID = $_GET["officerid"];
@@ -85,7 +84,7 @@ if (isset($_POST['save-officer'])) {
 
         <li class="nav-item">
           <a href="equipmentspage.php" class="inactive-hover-items nav-link py-3 d-flex rounded-4">
-          <span class="material-symbols-outlined mx-1">videocam</span>
+            <span class="material-symbols-outlined mx-1">videocam</span>
             Equipments
           </a>
         </li>
@@ -102,61 +101,58 @@ if (isset($_POST['save-officer'])) {
     <aside class="col-2"></aside>
 
     <!-- Officers Dashboard -->
-    <div class= "d-flex flex-column col-10">
-    <div class= "d-flex justify-content-between">
-    <section class="col-12 border p-2">
-      <div>
-        <div>
-          <h5 class="d-flex justify-content-between align-items-center fw-bold">
-            <div class="d-flex">
-            <span class="material-symbols-outlined mx-1">
-              supervised_user_circle
-            </span>
-              Officers
+    <div class="d-flex flex-column col-10">
+      <div class="d-flex justify-content-between">
+        <section class="col-12 border p-2">
+          <div>
+            <div>
+              <h5 class="d-flex justify-content-between align-items-center fw-bold">
+                <div class="d-flex">
+                  <span class="material-symbols-outlined mx-1">
+                    edit
+                  </span>
+                  Edit Officer
+                </div>
+              </h5>
             </div>
-          </h5>
-        </div>
-    </section>
-     </div>
+        </section>
+      </div>
 
 
-<div class="d-flex flex-nowrap">
-                <section class="col-6 container p-3 bg-white border rounded">
-                    <h5 class="fw-bold">Re-enter officer details</h5>
-                    <form method="post">
-                        <div class="mb-3">
-                            <label for="" class="form-label">Given Name</label>
-                            <input type="text" name="OFF_GivenName" id=" " class="form-control"
-                                value="<?php echo $OFF_GIVENNAME ?>" />
-                        </div>
-                        <div class="mb-3">
-                            <label for="" class="form-label">Surname</label>
-                            <input type="text" name="OFF_Surname" id=" " class="form-control"
-                                value="<?php echo $OFF_SURNAME ?>" />
-                        </div>
-                        <div class="mb-3">
-                            <label for="" class="form-label">Email Address</label>
-                            <input type="email" name="OFF_EmailAdd" id=" " class="form-control"
-                                value="<?php echo $OFF_EMAILADD ?>" />
-                        </div>
-                        <div class="mb-3">
-                            <label for="" class="form-label">Date of Birth</label>
-                            <input type="date" name="OFF_DOB" id=" " class="form-control"
-                                value="<?php echo $OFF_DOB ?>" />
-                        </div>
-                        <div class="mt-4 d-flex justify-content-center">
-                            <button name="save-officer" class="btn btn-lg btn-primary d-flex align-items-center">
-                                Save
-                            </button>
-                        </div>
-                    </form>
-                </section>
+      <div class="d-flex flex-nowrap">
+        <section class="col-6 container p-3 bg-white border rounded">
+          <h5 class="fw-bold">Re-enter officer details</h5>
+          <form method="post">
+            <div class="mb-3">
+              <label for="" class="form-label">Given Name</label>
+              <input type="text" name="OFF_GivenName" id=" " class="form-control" value="<?php echo $OFF_GIVENNAME ?>" />
             </div>
-</main>
+            <div class="mb-3">
+              <label for="" class="form-label">Surname</label>
+              <input type="text" name="OFF_Surname" id=" " class="form-control" value="<?php echo $OFF_SURNAME ?>" />
+            </div>
+            <div class="mb-3">
+              <label for="" class="form-label">Email Address</label>
+              <input type="email" name="OFF_EmailAdd" id=" " class="form-control" value="<?php echo $OFF_EMAILADD ?>" />
+            </div>
+            <div class="mb-3">
+              <label for="" class="form-label">Date of Birth</label>
+              <input type="date" name="OFF_DOB" id=" " class="form-control" value="<?php echo $OFF_DOB ?>" />
+            </div>
+            <div class="mt-4 d-flex justify-content-center">
+              <button name="save-officer" class="btn btn-lg btn-primary d-flex align-items-center">
+                Save
+              </button>
+            </div>
+          </form>
+        </section>
+      </div>
+  </main>
 
-  
+
   <!-- Bootstrap & Popper scripts -->
   <script src="../../node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
   <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
+
 </html>

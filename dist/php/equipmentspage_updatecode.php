@@ -1,10 +1,15 @@
-
 <?php
 include 'session.php';
 $EQ_ID = $_GET["equipmentid"];
 $sql = "SELECT * FROM equipment WHERE EQ_ID = '$EQ_ID'";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
+
+$MEM_ID = $row['MEM_ID'];
+$queryMember = "SELECT * FROM member ORDER BY MEM_ID ASC";
+$resultMember = mysqli_query($conn, $queryMember);
+$rowCount = mysqli_num_rows($resultMember);
+
 
 $EQ_ID = $row["EQ_ID"];
 $EQ_NAME = $row["EQ_Name"];
@@ -18,7 +23,10 @@ if (isset($_POST['save-equipment'])) {
   $EQ_LASTUSEDDATE = $_POST["EQ_LastUsedDate"];
   $EQ_OWNER = $_POST["EQ_Owner"];
 
-  $sql = "UPDATE equipment SET EQ_Name = '$EQ_NAME', EQ_Type = '$EQ_TYPE', EQ_LastUsedDate = '$EQ_LASTUSEDDATE', EQ_Owner = '$EQ_OWNER' WHERE EQ_ID = '$EQ_ID'";
+
+  $MEM_ID = ($_POST["memberBorrow"]) ? $_POST["memberBorrow"] : "NULL";
+
+  $sql = "UPDATE equipment SET EQ_Name = '$EQ_NAME', EQ_Type = '$EQ_TYPE', EQ_LastUsedDate = '$EQ_LASTUSEDDATE', EQ_Owner = '$EQ_OWNER', MEM_ID = $MEM_ID WHERE EQ_ID = '$EQ_ID'";
   $result = mysqli_query($conn, $sql);
   mysqli_close($conn);
   header("location:equipmentspage.php");
@@ -86,7 +94,7 @@ if (isset($_POST['save-equipment'])) {
 
         <li class="nav-item">
           <a href="equipmentspage.php" class="nav-link py-3 d-flex rounded-4 active">
-          <span class="material-symbols-outlined mx-1">videocam</span>
+            <span class="material-symbols-outlined mx-1">videocam</span>
             Equipments
           </a>
         </li>
@@ -102,61 +110,84 @@ if (isset($_POST['save-equipment'])) {
     </aside>
     <aside class="col-2"></aside>
 
-    <!-- Officers Dashboard -->
-    <div class= "d-flex flex-column col-10">
-    <div class= "d-flex justify-content-between">
-    <section class="col-12 border p-2">
-      <div>
-        <div>
-          <h5 class="d-flex justify-content-between align-items-center fw-bold">
-            <div class="d-flex">
-            <span class="material-symbols-outlined mx-1">
-              supervised_user_circle
-            </span>
-              Officers
+    <div class="d-flex flex-column col-10">
+      <div class="d-flex justify-content-between">
+        <section class="col-12 border p-2">
+          <div>
+            <div>
+              <h5 class="d-flex justify-content-between align-items-center fw-bold">
+                <div class="d-flex">
+                  <span class="material-symbols-outlined mx-1">
+                    edit
+                  </span>
+                  Edit Equipment
+                </div>
+              </h5>
             </div>
-          </h5>
+        </section>
+      </div>
+
+      <form method="post">
+        <div class="d-flex flex-nowrap">
+
+          <section class="col-6 container p-3 bg-white border rounded">
+            <h5 class="fw-bold">Re-enter equipment details</h5>
+
+            <div class="mb-3">
+              <label for="" class="form-label">Equipment Name</label>
+              <input type="text" name="EQ_Name" id=" " class="form-control" value="<?php echo $EQ_NAME ?>" />
+            </div>
+            <div class="mb-3">
+              <label for="" class="form-label">Type</label>
+              <input type="text" name="EQ_Type" id=" " class="form-control" value="<?php echo $EQ_TYPE ?>" />
+            </div>
+            <div class="mb-3">
+              <label for="" class="form-label">Last used date</label>
+              <input type="date" name="EQ_LastUsedDate" id=" " class="form-control" value="<?php echo $EQ_LASTUSEDDATE ?>" />
+            </div>
+            <label for="" class="form-label">Owner</label>
+            <input type="text" name="EQ_Owner" id=" " class="form-control" value="<?php echo $EQ_OWNER ?>" />
+          </section>
+          <section class="col-3 me-5 bg-white border rounded p-2">
+            <h5 class="fw-bold">Select borrower</h5>
+            <div class="list-group overflow-y-auto" style="max-height: 60vh">
+              <input type="radio" class="btn-check" name="memberBorrow" id="noneselect" autocomplete="off" value="">
+              <label class="btn btn-outline-primary w-100" for="noneselect">None</label>
+              <!-- Client list standard -->
+              <?php
+              if ($rowCount > 0) {
+                while ($rowMember = mysqli_fetch_assoc($resultMember)) {
+                  $MEM_ID = $rowMember['MEM_ID'];
+                  $MEM_FULLNAME = $rowMember['MEM_GivenName'] . ' ' . $rowMember['MEM_Surname'];
+              ?>
+
+                  <input type="radio" class="btn-check" name="memberBorrow" id="mem<?php echo $rowMember['MEM_ID'] ?>" autocomplete="off" value="<?php echo $MEM_ID ?>" <?php if ($row['MEM_ID'] == $rowMember['MEM_ID']) echo 'checked="checked"' ?>>
+                  <label class="btn btn-outline-primary w-100" for="mem<?php echo $rowMember['MEM_ID'] ?>"><?php echo $MEM_FULLNAME ?></label>
+              <?php
+                }
+              } else {
+                echo '<p class="text-center">No members found</p>';
+              }
+              ?>
+            </div>
+
+          </section>
         </div>
-    </section>
-     </div>
+        <div class="mt-4 d-flex justify-content-center">
+          <button name="save-equipment" class="btn btn-lg btn-primary d-flex align-items-center">
+            Save
+          </button>
+        </div>
+      </form>
+
+    </div>
+  </main>
 
 
-<div class="d-flex flex-nowrap">
-                <section class="col-6 container p-3 bg-white border rounded">
-                    <h5 class="fw-bold">Re-enter eqipment details</h5>
-                    <form method="post">
-                        <div class="mb-3">
-                            <label for="" class="form-label">Equipment Name</label>
-                            <input type="text" name="EQ_Name" id=" " class="form-control"
-                                value="<?php echo $EQ_NAME ?>" />
-                        </div>
-                        <div class="mb-3">
-                            <label for="" class="form-label">Type</label>
-                            <input type="text" name="EQ_Type" id=" " class="form-control"
-                                value="<?php echo $EQ_TYPE ?>" />
-                        </div>
-                        <div class="mb-3">
-                            <label for="" class="form-label">Last used date</label>
-                            <input type="date" name="EQ_LastUsedDate" id=" " class="form-control"
-                                value="<?php echo $EQ_LASTUSEDDATE ?>" />
-                        </div>
-                        <label for="" class="form-label">Owner</label>
-                            <input type="text" name="EQ_Owner" id=" " class="form-control"
-                                value="<?php echo $EQ_OWNER ?>" />
-                        </div>
-                        <div class="mt-4 d-flex justify-content-center">
-                            <button name="save-equipment" class="btn btn-lg btn-primary d-flex align-items-center">
-                                Save
-                            </button>
-                        </div>
-                    </form>
-                </section>
-            </div>
-</main>
 
-  
   <!-- Bootstrap & Popper scripts -->
   <script src="../../node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
   <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
+
 </html>

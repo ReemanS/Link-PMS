@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -62,7 +59,7 @@
 
         <li class="nav-item">
           <a href="equipmentspage.php" class="nav-link py-3 d-flex rounded-4 active">
-          <span class="material-symbols-outlined mx-1">videocam</span>
+            <span class="material-symbols-outlined mx-1">videocam</span>
             Equipments
           </a>
         </li>
@@ -81,76 +78,88 @@
     <aside class="col-2"></aside>
 
 
-  <!-- Officers Dashboard -->
-  <div class= "d-flex flex-column col-10">
-    <div class= "d-flex justify-content-between">
-    <section class="col-12 border p-2">
-      <div>
-        <div>
-          <h5 class="d-flex justify-content-between align-items-center fw-bold">
-            <div class="d-flex">
-            <span class="material-symbols-outlined mx-1">
-              supervised_user_circle
-            </span>
-              Officers
+    <!-- Officers Dashboard -->
+    <div class="d-flex flex-column col-10">
+      <div class="d-flex justify-content-between">
+        <section class="col-12 p-2">
+          <div>
+            <div>
+              <h5 class="d-flex justify-content-between align-items-center fw-bold">
+                <div class="d-flex">
+                  <span class="material-symbols-outlined mx-1">
+                    videocam
+                  </span>
+                  Equipments
+                </div>
+                <a href="add_equipments.php" class="btn btn-primary d-flex">
+                  <span class="material-symbols-outlined"> add </span>
+                  Add Equipment
+                </a>
+              </h5>
             </div>
-            <a href="add_equipments.php" class="btn btn-primary d-flex">
-                            <span class="material-symbols-outlined"> add </span>
-                            Add Equipment
-                        </a>
-          </h5>
+        </section>
+      </div>
+
+
+
+      <div class="m-2">
+        <div class="table-responsive">
+          <table class="table table-striped table-hover align-middle">
+            <thead>
+              <tr>
+                <th>Equipment ID</th>
+                <th>Equipment Name</th>
+                <th>Type</th>
+                <th>Last used date</th>
+                <th>Owner</th>
+                <th>In use by</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+              include 'session.php';
+              $display = "SELECT * FROM equipment";
+              $data = $conn->query($display);
+              while ($row = mysqli_fetch_array($data)) {
+                $MEM_ID = $row['MEM_ID'];
+                $queryMember = "SELECT MEM_GivenName, MEM_Surname FROM member WHERE MEM_ID = '$MEM_ID'";
+                $dataMember = $conn->query($queryMember);
+                $rowMember = mysqli_fetch_array($dataMember);
+                $rowCount = mysqli_num_rows($dataMember);
+                if ($rowCount > 0) {
+                  $MEM_FULLNAME = $rowMember['MEM_GivenName'] . ' ' . $rowMember['MEM_Surname'];
+                } else {
+                  $MEM_FULLNAME = NULL;
+                }
+
+              ?>
+                <tr>
+                  <td><?php echo $row['EQ_ID'] ?></td>
+                  <td><?php echo $row['EQ_Name'] ?></td>
+                  <td><?php echo $row['EQ_Type'] ?></td>
+                  <td><?php echo $row['EQ_LastUsedDate'] ?></td>
+                  <td><?php echo $row['EQ_Owner'] ?></td>
+                  <td><?php echo ($row['MEM_ID']) ? $MEM_FULLNAME : '<span class="text-muted">None</span>' ?>
+                  </td>
+                  <td>
+                    <div class="d-flex">
+                      <a class="btn rounded-pill btn-sm btn-info d-flex mx-1" href="equipmentspage_updatecode.php?equipmentid=<?php echo $row['EQ_ID'] ?>">
+                        <span class="material-symbols-outlined"> edit </span>
+                      </a>
+                      <form action="equipmentspage_deletecode.php" method="GET" onsubmit="return confirm('Are you sure you want to delete this record?');">
+                        <input type="hidden" name="EQ_ID" value="<?php echo $row['EQ_ID'] ?>">
+                        <button type="submit" class="btn rounded-pill btn-sm btn-danger d-flex mx-1">
+                          <span class="material-symbols-outlined"> delete </span>
+                        </button>
+                      </form>
+                    </div>
+                  </td>
+                </tr>
+              <?php
+              } ?>
+            </tbody>
+          </table>
         </div>
-    </section>
-     </div>
-
-
-
-     <div class="card-body">
-  <div class="table-responsive">
-    <table class="table table-striped table-hover">
-      <thead>
-        <tr>
-          <th>Equipment ID</th>
-          <th>Equipment Name</th>
-          <th>Type</th>
-          <th>Last used date</th>
-          <th>Owner</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php
-        include 'session.php';
-        $display = "SELECT * FROM equipment";
-        $data = $conn->query($display);
-        while($row = mysqli_fetch_array($data))
-        {
-        ?>
-        <tr>
-          <td><?php echo $row['EQ_ID']?></td>
-          <td><?php echo $row['EQ_Name']?></td>
-          <td><?php echo $row['EQ_Type']?></td>
-          <td><?php echo $row['EQ_LastUsedDate']?></td>
-          <td><?php echo $row['EQ_Owner']?></td>
-          <td>
-            <div class="d-flex">
-            <a class="btn rounded-pill btn-sm btn-info d-flex mx-1"
-                                href="equipmentspage_updatecode.php?equipmentid=<?php echo $row['EQ_ID'] ?>">
-                                <span class="material-symbols-outlined"> edit </span>
-                            </a>
-              <form action="equipmentspage_deletecode.php" method="GET" onsubmit="return confirm('Are you sure you want to delete this record?');">
-                <input type="hidden" name="EQ_ID" value="<?php echo $row['EQ_ID'] ?>">
-                <button type="submit" class="btn rounded-pill btn-sm btn-danger d-flex mx-1">
-                  <span class="material-symbols-outlined"> delete </span>
-                </button>
-              </form>
-            </div>
-          </td>
-        </tr>
-        <?php
-        }?>
-      </tbody>
-    </table>
-  </div>
 
 
   </main>

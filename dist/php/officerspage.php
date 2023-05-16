@@ -1,19 +1,17 @@
 <?php
-if(isset($_POST['search']))
-{
-$s = $_POST['valueToSearch'];
-$query = "SELECT * FROM officer WHERE OFF_ID LIKE '%$s%'";
-$search_result = filterTable($query);
-}
-else {
-$query = "SELECT * FROM `officer` ORDER BY OFF_ID DESC";
-$search_result = filterTable($query);
+if (isset($_POST['search'])) {
+  $s = $_POST['valueToSearch'];
+  $query = "SELECT * FROM officer WHERE OFF_ID LIKE '%$s%'";
+  $search_result = filterTable($query);
+} else {
+  $query = "SELECT * FROM `officer` ORDER BY OFF_ID DESC";
+  $search_result = filterTable($query);
 }
 function filterTable($query)
 {
-include 'session.php';
-$filter_Result = mysqli_query($conn, $query);
-return $filter_Result;
+  include 'session.php';
+  $filter_Result = mysqli_query($conn, $query);
+  return $filter_Result;
 }
 ?>
 
@@ -78,7 +76,7 @@ return $filter_Result;
 
         <li class="nav-item">
           <a href="equipmentspage.php" class="inactive-hover-items nav-link py-3 d-flex rounded-4">
-          <span class="material-symbols-outlined mx-1">videocam</span>
+            <span class="material-symbols-outlined mx-1">videocam</span>
             Equipments
           </a>
         </li>
@@ -95,80 +93,80 @@ return $filter_Result;
     <aside class="col-2"></aside>
 
     <!-- Officers Dashboard -->
-    <div class= "d-flex flex-column col-10">
-    <div class= "d-flex justify-content-between">
-    <section class="col-12 border p-2">
-      <div>
-        <div>
-          <h5 class="d-flex justify-content-between align-items-center fw-bold">
-            <div class="d-flex">
-            <span class="material-symbols-outlined mx-1">
-              supervised_user_circle
-            </span>
-              Officers
+    <div class="d-flex flex-column col-10">
+      <div class="d-flex justify-content-between">
+        <section class="col-12 p-2">
+          <div>
+            <div>
+              <h5 class="d-flex justify-content-between align-items-center fw-bold">
+                <div class="d-flex">
+                  <span class="material-symbols-outlined mx-1">
+                    supervised_user_circle
+                  </span>
+                  Officers
+                </div>
+                <a href="add_officers.php" class="btn btn-primary d-flex">
+                  <span class="material-symbols-outlined"> add </span>
+                  Add Officer
+                </a>
+              </h5>
             </div>
-            <a href="add_officers.php" class="btn btn-primary d-flex">
-                            <span class="material-symbols-outlined"> add </span>
-                            Add Officer
-                        </a>
-          </h5>
+        </section>
+      </div>
+
+
+      <div class="m-2">
+        <div class="table-responsive">
+          <table class="table table-striped table-hover align-middle">
+            <thead>
+              <tr>
+                <th>Officer ID</th>
+                <th>Officer Given Name</th>
+                <th>Officer Surname</th>
+                <th>Officer Email</th>
+                <th>Officer Birthday</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+              include 'session.php';
+              $display = "SELECT * FROM officer";
+              $data = $conn->query($display);
+              while ($row = mysqli_fetch_array($data)) {
+              ?>
+                <tr>
+                  <td><?php echo $row['OFF_ID'] ?></td>
+                  <td><?php echo $row['OFF_GivenName'] ?></td>
+                  <td><?php echo $row['OFF_Surname'] ?></td>
+                  <td><?php echo $row['OFF_EmailAdd'] ?></td>
+                  <td><?php echo $row['OFF_DOB'] ?></td>
+                  <td>
+                    <div class="d-flex">
+                      <a class="btn rounded-pill btn-sm btn-info d-flex mx-1" href="officerspage_updatecode.php?officerid=<?php echo $row['OFF_ID'] ?>">
+                        <span class="material-symbols-outlined"> edit </span>
+                      </a>
+                      <form action="officerspage_deletecode.php" method="GET" onsubmit="return confirm('Are you sure you want to delete this record?');">
+                        <input type="hidden" name="OFF_ID" value="<?php echo $row['OFF_ID'] ?>">
+                        <button type="submit" class="btn rounded-pill btn-sm btn-danger d-flex mx-1">
+                          <span class="material-symbols-outlined"> delete </span>
+                        </button>
+                      </form>
+                    </div>
+                  </td>
+                </tr>
+              <?php
+              } ?>
+            </tbody>
+          </table>
         </div>
-    </section>
-     </div>
+      </div>
+
+  </main>
 
 
-
-     <div class="card-body">
-  <div class="table-responsive">
-    <table class="table table-striped table-hover">
-      <thead>
-        <tr>
-          <th>Officer ID</th>
-          <th>Officer Given Name</th>
-          <th>Officer Surname</th>
-          <th>Officer Email</th>
-          <th>Officer Birthday</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php
-        include 'session.php';
-        $display = "SELECT * FROM officer";
-        $data = $conn->query($display);
-        while($row = mysqli_fetch_array($data))
-        {
-        ?>
-        <tr>
-          <td><?php echo $row['OFF_ID']?></td>
-          <td><?php echo $row['OFF_GivenName']?></td>
-          <td><?php echo $row['OFF_Surname']?></td>
-          <td><?php echo $row['OFF_EmailAdd']?></td>
-          <td><?php echo $row['OFF_DOB']?></td>
-          <td>
-            <div class="d-flex">
-            <a class="btn rounded-pill btn-sm btn-info d-flex mx-1"
-                                href="officerspage_updatecode.php?officerid=<?php echo $row['OFF_ID'] ?>">
-                                <span class="material-symbols-outlined"> edit </span>
-                            </a>
-              <form action="officerspage_deletecode.php" method="GET" onsubmit="return confirm('Are you sure you want to delete this record?');">
-                <input type="hidden" name="OFF_ID" value="<?php echo $row['OFF_ID'] ?>">
-                <button type="submit" class="btn rounded-pill btn-sm btn-danger d-flex mx-1">
-                  <span class="material-symbols-outlined"> delete </span>
-                </button>
-              </form>
-            </div>
-          </td>
-        </tr>
-        <?php
-        }?>
-      </tbody>
-    </table>
-  </div>
-      </main>
-
-  
   <!-- Bootstrap & Popper scripts -->
   <script src="../../node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
   <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
+
 </html>
